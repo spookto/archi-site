@@ -16,6 +16,9 @@ collections:
 sass:
   quiet_deps: true
 
+plugins:
+  - "jekyll-github-metadata"
+
 lsi: false
 safe: true
 source: .
