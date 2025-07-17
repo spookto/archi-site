@@ -120,6 +120,12 @@ nav a:not(:last-child) {
   width: 200px;
   box-shadow: 10px 10px $main-color;
 }
+
+#membersGrid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 16px;
+}
 // End Page Specifics
 
 // Footer
@@ -204,6 +210,10 @@ footer {
   #headerMenuLinks {
     display: none;
   }
+  #membersGrid {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
 }
 
 /* Small devices (768px and below) */
@@ -221,6 +231,11 @@ footer {
   .contentDiv {
     padding: 32px;
     min-width: 100%;
+  }
+  #membersGrid {
+    display: grid;
+    grid-template-columns: auto;
+    justify-items: center;
   }
 }
 
