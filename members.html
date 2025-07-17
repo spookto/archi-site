@@ -1,0 +1,15 @@
+---
+layout: default
+title: Team Members
+short_name: members
+---
+<ul>
+  {% for member in site.team_members %}
+    <li>
+      <h2>{{ member.name }}</h2>
+      <img src="assets/images/member_{{member.short_name}}.png" class="memberImage"/>
+      <h3>{{ member.position }}</h3>
+      <p>{{ member.content | markdownify }}</p>
+    </li>
+  {% endfor %}
+</ul>

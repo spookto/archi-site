@@ -1,0 +1,239 @@
+$background-dark: #222;
+$background-light: #fff;
+$text-black: #000;
+$text-white: #fff;
+$main-color: #a52b2d;
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Cairo', sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+#main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+h1 {
+  font-size: 26px;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit; /* no underline */
+}
+
+header {
+  display: grid;
+  grid-template-columns: auto auto;
+  background-color: $main-color;
+  color: $text-white;
+  padding: 4px 10px;
+}
+
+#headerTitle {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  line-height: 180%;
+}
+
+.logo {
+  height: 88px;
+  margin: 0.5em;
+}
+
+nav {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  font-weight: bolder;
+  text-align: center;
+  font-size: 200%;
+}
+
+nav a {
+  padding: 0 10px;
+}
+
+nav a:not(:last-child) {
+  border-right: solid 4px $text-white;
+}
+
+.contentBackground {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  background-color: #dcdcdc;
+  background-image: url("../images/paper.png");
+  background-blend-mode: difference;
+  align-self: stretch;
+  background-repeat: repeat repeat;
+}
+
+.contentDiv {
+  flex-grow: 1;
+  margin: 0;
+  padding: 48px;
+  min-width: 60vw;
+  color: $text-black;
+  background-color: $background-light;
+  background-image: url("../images/paper.png");
+}
+
+.mainImage {
+  display: block;
+  width: 100%;
+  background-color: white;
+  border-bottom: solid $main-color 16px;
+}
+
+.mainImageDiv {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.mainImageDiv h1 {
+  position: absolute;
+  bottom: 8px;
+  left: 9px;
+  font-size: 60px;
+  color: $text-white
+}
+
+// Page Specifics
+.memberImage {
+  aspect-ratio: 1;
+  object-fit: cover;
+  width: 200px;
+  box-shadow: 10px 10px $main-color;
+}
+// End Page Specifics
+
+// Footer
+footer {
+  bottom: 0;
+  width: 100%;
+  clear: both;
+  display: grid;
+  grid-template-columns: auto auto;
+  background-color: $main-color;
+  color: $text-white;
+  padding: 0 28px;
+  padding-bottom: 30px;
+}
+
+#footerTitle {
+  display: flex;
+  justify-content: left;
+  vertical-align: middle;
+  align-items: center;
+  text-align: center;
+}
+
+#footerTitle img {
+  margin: 0;
+}
+
+#footerTitleTexts {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 20px;
+}
+
+#footerTitleTexts h1 {
+  word-spacing: -80%;
+  font-size: 90px;
+  line-height: 100%;
+}
+
+#footerTitleTexts h4 {
+  font-size: 14px;
+  line-height: 100%;
+  font-weight: normal;
+}
+
+#footerCopyright * {
+  font-weight: 500;
+}
+
+#footerLinks {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  align-self: center;
+  gap: 16px;
+  font-size: 64px;
+  flex-wrap: wrap;
+}
+// End Footer
+
+
+/* Medium devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (max-width: 1000px) {
+  #headerTitleTexts {
+    display: block;
+  }
+  #headerTextLinks {
+    display: block;
+  }
+  nav {
+    font-size: 140%;
+  }
+
+  nav a {
+    padding: 0 8px;
+  }
+
+  nav a:not(:last-child) {
+    border-right: solid 2px $text-white;
+  }
+  #headerMenuLinks {
+    display: none;
+  }
+}
+
+/* Small devices (portrait tablets and large phones) */
+@media only screen and (max-width: 768px) {
+  #headerTitle .logo {
+    size: 20px;
+    max-height: 40px;
+  }
+  #headerTextLinks {
+    display: none;
+  }
+  #headerMenuLinks {
+    display: block;
+  }
+  .contentDiv {
+    padding: 32px;
+    min-width: 100%;
+  }
+}
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 1000px) {
+  #headerTitleTexts {
+    display: block;
+  }
+  #headerTextLinks {
+    display: block;
+  }
+  #headerMenuLinks {
+    display: none;
+  }
+}
