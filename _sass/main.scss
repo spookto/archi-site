@@ -33,9 +33,20 @@ a {
   text-decoration: inherit; /* no underline */
 }
 
+.logo {
+  height: 88px;
+  margin: 0.5em;
+}
+
+.hflex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Header Begin
 header {
-  display: grid;
-  grid-template-columns: auto auto;
   background-color: $main-color;
   color: $text-white;
   padding: 4px 10px;
@@ -46,11 +57,6 @@ header {
   justify-content: left;
   align-items: center;
   line-height: 180%;
-}
-
-.logo {
-  height: 88px;
-  margin: 0.5em;
 }
 
 nav {
@@ -69,6 +75,54 @@ nav a {
 nav a:not(:last-child) {
   border-right: solid 4px $text-white;
 }
+
+#headerTextLinks {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+}
+
+#headerMenuButton {
+  background: none no-repeat left center;
+  background-image: none;
+  display: none;
+}
+
+#headerMenuButtonLabel {
+  font-size: 56px;
+  display: block;
+  padding: 10px 0 10px 50px;
+  cursor: pointer;
+}
+
+#headerMenuContent {
+  display: flex;
+  flex-direction: column;
+  font-weight: bolder;
+  text-align: center;
+  align-items: stretch;
+  font-size: 200%;
+  background-color: $main-color;
+  color: $text-white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+#headerMenuAnchor {
+  position: relative;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+#headerMenuButton:checked ~ #headerMenuAnchor {
+  overflow: visible;
+  min-height: 100%;
+}
+// Header End
 
 .contentBackground {
   display: flex;
@@ -188,27 +242,16 @@ footer {
 // End Footer
 
 
-/* Medium devices (768px to 1000px) */
+/* Medium devices (1000px and below) */
 @media only screen and (max-width: 1000px) {
   #headerTitleTexts {
     display: block;
   }
   #headerTextLinks {
-    display: block;
-  }
-  nav {
-    font-size: 140%;
-  }
-
-  nav a {
-    padding: 0 8px;
-  }
-
-  nav a:not(:last-child) {
-    border-right: solid 2px $text-white;
-  }
-  #headerMenuLinks {
     display: none;
+  }
+  #headerMenuButtonLabel {
+    display: block;
   }
   #membersGrid {
     display: grid;
@@ -225,7 +268,7 @@ footer {
   #headerTextLinks {
     display: none;
   }
-  #headerMenuLinks {
+  #headerMenuButtonLabel {
     display: block;
   }
   .contentDiv {
@@ -245,10 +288,7 @@ footer {
   #headerTitleTexts {
     display: block;
   }
-  #headerTextLinks {
-    display: block;
-  }
-  #headerMenuLinks {
+  #headerMenuButtonLabel {
     display: none;
   }
 }

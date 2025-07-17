@@ -1,0 +1,16 @@
+pages:
+
+- title: Articles
+  url: articles
+
+- title: Team Structure
+  url: team
+
+- title: Our Portfolio
+  url: portfolio
+
+- title: Members
+  url: members
+
+- title: Mentions
+  url: mentions
