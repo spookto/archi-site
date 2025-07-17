@@ -3,3 +3,12 @@ layout: default
 title: Mentions
 short_name: mentions
 ---
+{% for mention in site.data.mentions %}
+    <a href="{{ mention.url }}">
+        <div class="mentionBox boxContainer">
+            <img src="{{ mention.image }}">
+            <h1>{{ mention.title }}</h1>
+            <p>{{ mention.text }}</p>
+        </div>
+    </a>
+{% endfor %}

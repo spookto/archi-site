@@ -45,6 +45,15 @@ a {
   justify-content: space-between;
 }
 
+.boxContainer {
+  display: flex;
+  flex-direction: column;
+  border: solid $background-dark 4px;
+  box-shadow: 10px 10px $main-color;
+  margin-bottom: 18px;
+  padding: 16px;
+}
+
 // Header Begin
 header {
   background-color: $main-color;
@@ -180,6 +189,22 @@ nav a:not(:last-child) {
   grid-template-columns: auto auto auto;
   grid-gap: 16px;
 }
+
+.mentionBox {
+  display: flex;
+  flex-direction: column;
+  border: solid $background-dark 4px;
+  box-shadow: 10px 10px $main-color;
+  margin-bottom: 18px;
+  padding: 16px;
+}
+
+.mentionBox img {
+  max-height: 500px;
+  background-color: #ffc232;
+  object-fit: contain;
+}
+
 // End Page Specifics
 
 // Footer
@@ -290,5 +315,8 @@ footer {
   }
   #headerMenuButtonLabel {
     display: none;
+  }
+  .contentDiv {
+    max-width: 70vw;
   }
 }
