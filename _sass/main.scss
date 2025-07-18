@@ -165,6 +165,15 @@ nav a:not(:last-child) {
   background-image: url("../images/paper.png");
 }
 
+.contentDiv a {
+  color: $main-color;
+  text-decoration: underline;
+}
+
+.contentDiv img {
+  max-width: 100%;
+}
+
 .mainImage {
   display: block;
   width: 100%;
@@ -197,7 +206,7 @@ nav a:not(:last-child) {
 #membersGrid {
   display: grid;
   grid-template-columns: auto auto auto;
-  grid-gap: 16px;
+  gap: 16px;
 }
 
 .mentionBox {
@@ -213,6 +222,20 @@ nav a:not(:last-child) {
   max-height: 500px;
   background-color: #ffc232;
   object-fit: contain;
+}
+
+#articlesContainer {
+  display: grid;
+  grid-template-columns: 48% 48%;
+  gap: 4%;
+  justify-self: center;
+  text-decoration: none;
+  color: $text-black;
+}
+
+#articlesContainer a {
+  text-decoration: none;
+  color: $text-black;
 }
 
 // End Page Specifics
