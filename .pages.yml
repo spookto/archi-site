@@ -17,6 +17,10 @@ content:
       - name: title
         label: Title
         type: string
+      - name: cover
+        label: Cover
+        type: image
+        description: Used in the articles list
       - name: body
         label: Body
         type: rich-text
