@@ -165,11 +165,6 @@ nav a:not(:last-child) {
   background-image: url("../images/paper.png");
 }
 
-.contentDiv a {
-  color: $main-color;
-  text-decoration: underline;
-}
-
 .contentDiv img {
   max-width: 100%;
 }
@@ -218,10 +213,18 @@ nav a:not(:last-child) {
   padding: 16px;
 }
 
+.mentionBox h1 {
+  font-size: $header-font-size * 1.5;
+}
+
 .mentionBox img {
   max-height: 500px;
   background-color: #ffc232;
   object-fit: contain;
+}
+
+.mentionContainer {
+  text-decoration: none;
 }
 
 #articlesContainer {
@@ -242,7 +245,6 @@ nav a:not(:last-child) {
   min-width: 100%;
   min-height: 100%;
 }
-
 // End Page Specifics
 
 // Footer
