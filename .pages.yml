@@ -24,6 +24,7 @@ content:
       - name: body
         label: Body
         type: rich-text
+
   - name: config
     label: Jekyll config
     path: _config.yml
@@ -44,3 +45,25 @@ content:
         label: Preview image
         type: image
         description: Image used in the social preview on social networks (e.g. Facebook, Twitter...)
+
+  - name: mentions
+    label: Mentions
+    type: file
+    path: _data/mentions.yml
+    list: true
+    fields:
+      - name: title
+        label: Title
+        type: string
+      - name: image
+        label: Cover Image
+        type: image
+        description: Shown in the mentions page
+      - name: url
+        label: Redirect URL
+        type: string
+        description: Sends user to this site on click
+      - name: rtl
+        label: Right-to-left
+        type: boolean
+        default: false
