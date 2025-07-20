@@ -8,10 +8,16 @@ email: archiyclub@gmail.com
 copyright-year: 2025
 
 defaults:
-  - scope:
-      path: "assets/images"
+  -
+    scope:
+      path: "assets/"
     values:
       image: true
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+    values:
+      layout: "default"
 
 collections:
   team_members:
