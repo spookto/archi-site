@@ -2,4 +2,34 @@
 layout: base
 title: Home
 ---
-<h1>{{ "Hello World!" | downcase }}</h1>
+<div class="bgPaper" style="display: flex; flex-direction: column; align-items: center;">
+  <div class="contentDiv" style="padding-top: 15px;">
+    <a href="{{ '/articles' | relative_url }}" class="boxContainer" style="max-width: min-content; padding: 0 7px;">
+      <h1 style="font-size: 32px;">Articles</h1>
+    </a>
+    {% if site.posts.size > 0 %}
+    <div>
+      <div id="postPreviewsContainerH">
+        {% assign big_post = site.posts.first %}
+        {% include post-box.html post=big_post%}
+
+        <div id="postPreviewsContainerV">
+        {% for post in site.posts offset:1 limit:2 %}
+        {% include post-box.html post=post%}
+        {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    {% else %}
+    <h3>No Articles Yet</h3>
+    {% endif %}
+
+  </div>
+</div>
+
+<div class="contentBackground">
+  <div class="contentDiv">
+
+  </div>
+</div>

@@ -1,0 +1,5 @@
+<a href="{{ include.post.url | relative_url }}" class="boxContainer postBox">
+  <img src="{{ include.post.cover | relative_url }}">
+  <h2 {% if include.post.rtl %}dir="rtl"{% endif %} style="flex-grow: 2;">{{ include.post.title }}</h2>
+  <!--h4>{{ include.post.date | date_to_long_string }}</h4!-->
+</a>

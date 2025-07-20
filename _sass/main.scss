@@ -143,6 +143,25 @@ nav a:not(:last-child) {
 }
 // Header End
 
+.bgPaper {
+  color: $text-black;
+  background-color: $background-light;
+  background-image: url("../images/paper.png");
+}
+
+.postBox {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  max-height: 100%;
+}
+
+.postBox img {
+  max-width: 100%;
+  aspect-ratio: 1.45;
+  object-fit: cover;
+}
+
 .contentBackground {
   display: flex;
   flex-direction: column;
