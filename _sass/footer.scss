@@ -5,7 +5,7 @@ footer {
   display: grid;
   grid-template-columns: auto auto;
   padding: 0 min(28px, 3vw);
-  padding-top: 16px;
+  padding-top: min(16px, 0.95vw);
   padding-bottom: 30px;
 }
 
@@ -19,7 +19,7 @@ footer {
 
 #footerTitle img {
   margin: 0;
-  max-width: min(100%, 15vw);
+  max-width: min(100%, 12vw);
   object-fit: contain;
 }
 
@@ -32,7 +32,7 @@ footer {
 
 #footerTitleTexts h1 {
   word-spacing: -0.1em;
-  font-size: min(90px, 14vw);
+  font-size: min(90px, 10vw);
   line-height: 100%;
   white-space: nowrap;
 }
@@ -50,7 +50,7 @@ footer {
 
 .footerText {
   font-weight: 500;
-  font-size: min(1.4em, 4vw);
+  font-size: min(1.4em, 3.5vw);
 }
 
 #footerLinks {
@@ -59,7 +59,7 @@ footer {
   justify-content: right;
   align-items: center;
   align-content: center;
-  gap: min(8px, 0.5vw);
+  gap: min(16px, 2.0vw);
   font-size: min(64px, 10vw);
   height: 100%;
   flex-wrap: nowrap;
@@ -78,7 +78,7 @@ footer {
     padding: 0;
   }
   #footerTitleTexts h1 {
-    word-spacing: -0.25em;
+    word-spacing: -0.15em;
   }
   #footerFullTitle {
     display: none;
