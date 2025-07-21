@@ -143,10 +143,29 @@ nav a:not(:last-child) {
 }
 // Header End
 
+// Backgrounds Begin
 .bgPaper {
   color: $text-black;
   background-color: $background-light;
   background-image: url("../images/paper.png");
+}
+
+.bgMainColor {
+  color: $text-white;
+  background-color: $main-color;
+}
+// Background End
+
+// Text Colors Begin
+.textMain {
+  color: $main-color;
+}
+// Text Colors End
+
+.centerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .postBox {
@@ -179,9 +198,6 @@ nav a:not(:last-child) {
   margin: 0;
   padding: 48px;
   min-width: 60vw;
-  color: $text-black;
-  background-color: $background-light;
-  background-image: url("../images/paper.png");
 }
 
 .contentDiv img {
@@ -389,6 +405,6 @@ footer {
     display: none;
   }
   .contentDiv {
-    max-width: 70vw;
+    max-width: 60vw;
   }
 }
