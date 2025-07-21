@@ -13,6 +13,7 @@ $navigation-font-size: 25px;
 }
 
 body {
+  background-color: $main-color;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
