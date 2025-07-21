@@ -1,0 +1,89 @@
+footer {
+  bottom: 0;
+  width: 100%;
+  clear: both;
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: 0 min(28px, 3vw);
+  padding-top: 16px;
+  padding-bottom: 30px;
+}
+
+#footerTitle {
+  display: flex;
+  justify-content: left;
+  vertical-align: middle;
+  align-items: center;
+  text-align: center;
+}
+
+#footerTitle img {
+  margin: 0;
+  max-width: min(100%, 15vw);
+  object-fit: contain;
+}
+
+#footerTitleTexts {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 16px;
+}
+
+#footerTitleTexts h1 {
+  word-spacing: -0.1em;
+  font-size: min(90px, 14vw);
+  line-height: 100%;
+  white-space: nowrap;
+}
+
+#footerTitleTexts h4 {
+  font-size: 14px;
+  line-height: 100%;
+  font-weight: normal;
+}
+
+#footerCopyright {
+  float: right;
+  line-height: 1.5;
+}
+
+.footerText {
+  font-weight: 500;
+  font-size: min(1.4em, 4vw);
+}
+
+#footerLinks {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  align-items: center;
+  align-content: center;
+  gap: min(8px, 0.5vw);
+  font-size: min(64px, 10vw);
+  height: 100%;
+  flex-wrap: nowrap;
+  text-align: center;
+}
+
+#footerLinks *{
+  min-width: 1em;
+}
+
+/* Medium devices (1000px and below) */
+@media only screen and (max-width: 1000px) {
+  #footerTitleTexts {
+    margin-left: 8px;
+    margin-right: 8px;
+    padding: 0;
+  }
+  #footerTitleTexts h1 {
+    word-spacing: -0.25em;
+  }
+  #footerFullTitle {
+    display: none;
+  }
+  #footerLinks {
+    gap: -8px;
+  }
+}
