@@ -65,6 +65,14 @@ a {
   background-color: #fff;
 }
 
+table {
+  width: 100%;
+}
+
+table, th, td {
+  border: 1px solid;
+}
+
 // Header Begin
 header {
   background-color: $main-color;
