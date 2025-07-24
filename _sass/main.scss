@@ -65,6 +65,10 @@ a {
   background-color: #fff;
 }
 
+span {
+  display: inline-block;
+}
+
 table {
   width: 100%;
 }
@@ -295,6 +299,35 @@ nav a:not(:last-child) {
   color: $text-black;
   min-width: 100%;
   min-height: 100%;
+}
+
+.postContainer {
+  flex-grow: 1;
+  height: 100%;
+  background-color: $background-light;
+  border-left: 2px solid #ddd;
+  border-right: 2px solid #ddd;
+  padding: 1em 2em;
+  padding-bottom: 5vh;
+}
+
+.postContainer span {
+  width: 100%;
+}
+
+.contentDiv:has(> .postContainer) {
+  display: flex;
+  flex-direction: column;
+  padding: 0 1em;
+  margin: 0px 16px;
+}
+
+ul, ol {
+  margin: 0 1em;
+}
+
+ul:has(> li p [dir="rtl"]), ol:has(> li p [dir="rtl"]) {
+  direction: rtl;
 }
 // End Page Specifics
 
