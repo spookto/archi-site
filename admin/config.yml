@@ -1,0 +1,80 @@
+# config.yml
+
+# when using the default proxy server port
+# Run `npx decap-server` in terminal to start local server
+local_backend: true
+
+backend:
+  name: git-gateway
+  #repo: spookto/archi-site
+  branch: main # Branch to update (optional; defaults to master)
+media_folder: "assets/images"
+public_folder: "/archi-site/assets/images"
+
+collections:
+  - name: "blog"
+    label: "Blog"
+    folder: "_posts/"
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    editor:
+      preview: true
+    fields: # The fields for each document, usually in front matter
+      - { label: "Layout", name: "layout", widget: "hidden", default: "post" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "team_members"
+    label: "Members"
+    folder: "_team_members/"
+    create: true
+    slug: "{{name}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    editor:
+      preview: false
+    fields:
+      - { label: "Display Name", name: "name", widget: "string" }
+      - { label: "Position", name: "position", widget: "string" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "mentions"
+    label: "Mentions"
+    folder: "_mentions/"
+    create: true
+    editor:
+      preview: false
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Arabic Title?", name: "rtl", widget: "boolean", default: false}
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Link", name: "link", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "config"
+    label: "Config"
+    editor:
+      preview: false
+    files:
+      - label: "Navigation"
+        name: "navigation"
+        file: "_data/navigation.yml"
+        fields:
+          - label: "Navigation Items"
+            name: "pages"
+            widget: "list"
+            fields:
+              - { label: Name, name: title, widget: string }
+              - { label: Link, name: url, widget: string }
+
+      - label: "Socials"
+        name: "socials"
+        file: "_data/socials.yml"
+        fields:
+          - label: "Social Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: Name, name: title, widget: string }
+              - { label: Font Awesome Icon, name: icon, widget: string }
+              - { label: Link, name: link, widget: string }
