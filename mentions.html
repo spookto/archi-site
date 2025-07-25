@@ -2,8 +2,8 @@
 title: Mentions
 short_name: mentions
 ---
-{% for mention in site.data.mentions %}
-    <a href="{{ mention.url }}" class="mentionContainer">
+{% for mention in site.mentions %}
+    <a href="{{ mention.link }}" class="mentionContainer">
         <div class="mentionBox boxContainer">
             <img src="{{ mention.image }}">
             <h1 {% if mention.rtl %}style="text-align:right;"{% endif %}>{{ mention.title }}</h1>

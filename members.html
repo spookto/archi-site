@@ -3,12 +3,14 @@ title: Team Members
 short_name: members
 ---
 <ul id="membersGrid">
+{% for i in (1..5) %}
   {% for member in site.team_members %}
     <li>
       <h2>{{ member.name }}</h2>
-      <img src="assets/images/member_{{member.short_name}}.png" class="memberImage"/>
+      <img src="{{ member.image }}" class="memberImage"/>
       <h3>{{ member.position }}</h3>
       <p>{{ member.content | markdownify }}</p>
     </li>
+  {% endfor %}
   {% endfor %}
 </ul>

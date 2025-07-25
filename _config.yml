@@ -28,6 +28,7 @@ defaults:
 
 collections:
   team_members:
+  mentions:
 
 sass:
   quiet_deps: true
