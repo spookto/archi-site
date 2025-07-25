@@ -1,0 +1,20 @@
+items:
+  - title: Instagram
+    icon: fa-brands fa-instagram
+    link: https://www.instagram.com/archiyclub
+
+  - title: Facebook
+    icon: fa-brands fa-facebook
+    link: https://www.facebook.com/people/Archi-youth-club/61558986412097
+
+  - title: Telegram
+    icon: fa-brands fa-telegram
+    link: https://t.me/archi_y_club
+
+  - title: Linkedin
+    icon: fa-brands fa-linkedin
+    link: https://www.linkedin.com/company/archiyclub
+
+  - title: TikTok
+    icon: fa-brands fa-tiktok
+    link: https://www.tiktok.com/@archiyclub

@@ -10,11 +10,9 @@
   </div>
   <div id="footerRight" >
       <div id="footerLinks">
-          <a class="fa-brands fa-instagram" href="https://www.instagram.com/archiyclub"></a>
-          <a class="fa-brands fa-facebook" href="https://www.facebook.com/people/Archi-youth-club/61558986412097"></a>
-          <a class="fa-brands fa-telegram" href="https://t.me/archi_y_club"></a>
-          <a class="fa-brands fa-linkedin" href="https://www.linkedin.com/company/archiyclub"></a>
-          <a class="fa-brands fa-tiktok" href="https://www.tiktok.com/@archiyclub"></a>
+        {% for social in site.data.socials.items %}
+          <a class="{{ social.icon }}" href="{{ social.link }}"></a>
+        {% endfor %}
       </div>
   </div>
   <h3 class="footerText">{{ site.email }}</h3>
