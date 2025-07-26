@@ -298,6 +298,16 @@ nav a:not(:last-child) {
   padding-bottom: 5vh;
 }
 
+.postContainer img {
+  display: block;
+  min-width: 100%;
+
+  align-self: center;
+  align-items: center;
+
+  object-fit: contain;
+}
+
 .postContainer span {
   width: 100%;
 }
