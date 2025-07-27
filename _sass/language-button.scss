@@ -1,0 +1,48 @@
+#language-en:checked ~ .content-ar {
+  display: none;
+}
+
+#language-ar:checked ~ .content-en {
+  display: none;
+}
+
+.toggle-on-content{
+  color: #dd7e6b
+}
+
+.toggle-off-content{
+  color: #6bbedd
+}
+
+.btn {
+  font-size: min(22px, 4vw);
+  font-weight: 700;
+  display: inline-block;
+  background-color: #939393;
+  padding: 3px 1em;
+  margin-right: 0.5em;
+  position: relative;
+  text-align: center;
+}
+
+input[type="radio"].toggle {
+  display: none;
+
+  & + label {
+    cursor: pointer;
+    min-width: 60px;
+
+    &:hover {
+      color: $main-color;
+    }
+  }
+
+  &:checked + label {
+    background-color: $main-color;
+    color: $text-white;
+
+    &:after {
+      left: 0;
+    }
+  }
+}

@@ -326,6 +326,48 @@ ul, ol {
 ul:has(> li p [dir="rtl"]), ol:has(> li p [dir="rtl"]) {
   direction: rtl;
 }
+
+#partnersPage h1 {
+  color: $main-color;
+  font-size: min(60px, 7vw);
+}
+
+#partnersPage p {
+  text-align: justify;
+  font-weight: 700;
+  font-size: min(24px, 4vw);
+}
+
+#partnersPage .content-ar {
+  margin-left: 8vw;
+}
+
+#partnersPage .content-en {
+  margin-right: 8vw;
+}
+
+#partnerLinksContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1em;
+}
+
+#partnerLinksContainer a {
+  flex-grow: 1;
+  aspect-ratio: 1.8;
+  min-width: 300px;
+  max-width: 32%;
+  padding: min(20px, 1vw);
+}
+
+#partnerLinksContainer a img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 // End Page Specifics
 
 /* Medium devices (1000px and below) */

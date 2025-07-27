@@ -1,0 +1,52 @@
+---
+title: Partners
+short_name: partners
+---
+<section id="partnersPage">
+  {% include language-button.html %}
+  <div class="content-en">
+    <h1>Partner and Funder Services</h1>
+    <p>We are a community of young architects working on developing urban and social projects led by the next generation. We connect creativity, execution, and social purpose, transforming ideas into tangible impact in cities.</p>
+    <br>
+
+    <h1>What We Offer</h1>
+    <p>General marketing strategies and smart media campaigns that showcase the identity of a place. 
+      Design and implementation of on-site architectural projects. Management of youth-led urban initiatives.
+      Production of urban documentary films.
+      Applied architectural training for university students</p>
+    <br>
+
+    <h1>Why Do We Partner?</h1>
+    <p>Because we work on the ground, with people, and for cities.</p>
+    <p>Because we build real partnerships, not temporary projects.</p>
+    <p>Because we know how to connect institutions with youth in impactful ways.</p>
+    <br>
+
+    <h1>Our Partners:</h1>
+  </div>
+
+  <div class="content-ar" dir="rtl">
+    <h1>خدمات الشركاء والممولين</h1>
+    <p>نحن مجتمع من المعماريين الشباب نعمل على تطوير مشاريع عمرانية ومجتمعية يقودها الجيل القادم. نربط بين الإبداع، التنفيذ، والهدف الاجتماعي، ونحوّل الفكرة إلى أثر واقعي في المدن</p>
+    <br>
+
+    <h1>ما نقدمه :</h1>
+    <p>خطط تسويقية عامة وحملات إعلامية ذكية تُظهر هوية المكان. تصميم وتنفيذ مشاريع معمارية ميدانية. إدارة مبادرات حضرية يقودها الشباب. إنتاج إعلانات وأفلام وثائقية عمرانية. تدريب معماري تطبيقي لطلبة الجامعات</p>
+    <br>
+
+    <h1>لماذا نتعاون؟</h1>
+    <p>لأننا نعمل من الميدان، مع الناس، ومن أجل المدن.</p>
+    <p>لأننا نبني شراكات حقيقية، لا مشاريع مؤقتة.</p>
+    <p>لأننا نعرف كيف نربط المؤسسات بالشباب بطرق مؤثرة.</p>
+    <br>
+
+    <h1>شركاؤنا:</h1>
+  </div>
+  <div id="partnerLinksContainer">
+    {% for partner in site.partners %}
+      <a href="{{ partner.link }}" class="boxContainer">
+        <img src="{{ partner.image }}">
+      </a>
+    {% endfor %}
+  </div>
+</section>

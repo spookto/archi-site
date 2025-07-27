@@ -29,6 +29,7 @@ defaults:
 collections:
   team_members:
   mentions:
+  partners:
 
 sass:
   quiet_deps: true
