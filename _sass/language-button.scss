@@ -6,19 +6,11 @@
   display: none;
 }
 
-.toggle-on-content{
-  color: #dd7e6b
-}
-
-.toggle-off-content{
-  color: #6bbedd
-}
-
 .btn {
   font-size: min(22px, 4vw);
   font-weight: 700;
   display: inline-block;
-  background-color: #939393;
+  background-color: $inactive-color;
   padding: 3px 1em;
   margin-right: 0.5em;
   position: relative;

@@ -7,6 +7,9 @@ subtitle: A collaborative space for urban engagement, civic, and professional gr
 email: archiyclub@gmail.com
 copyright-year: 2025
 
+paginate: 6
+paginate_path: "/articles/:num/"
+
 defaults:
   -
     scope:

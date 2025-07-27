@@ -1,0 +1,60 @@
+---
+title: Articles
+short_name: articles
+---
+<div id="articlesContainer">
+  {% for post in paginator.posts %}
+    {% include post-box.html post=post %}
+  {% endfor %}
+</div>
+
+<!-- Pagination links -->
+{% if paginator.total_pages > 1 %}
+  <div class="pagination">
+    {% assign prev_text = "&#x22D8;" %}
+    {% assign next_text = "&#x22D9;" %}
+
+    {% if paginator.previous_page %}
+      <a class="paginationDir" href="{{ paginator.previous_page_path | absolute_url }}">{{ prev_text }}</a>
+    {% else %}
+      <span class="paginationDir">{{ prev_text }}</span>
+    {% endif %}
+
+    {% assign first_page_index = paginator.page | minus: 2 %}
+    {% assign last_page_index = paginator.page | plus: 2 %}
+
+    {% if first_page_index < 1 %}
+      {% assign first_page_index = 1 %}
+      {% assign last_page_index = 5 | at_most: paginator.total_pages %}
+    {% elsif last_page_index > paginator.total_pages %}
+      {% assign first_page_index = paginator.total_pages | minus: 4 | at_least: 1 %}
+      {% assign last_page_index = paginator.total_pages %}
+    {% endif %}
+
+    {% if first_page_index > 1 %}
+      <a class="paginationButton" href="{{ site.paginate_path | absolute_url |  replace: ':num/', '' }}">{{ 1 }}</a>
+      <span>...</span>
+    {% endif %}
+
+    {% for page in (first_page_index..last_page_index) %}
+      {% if page == paginator.page %}
+        <span class="activePage">{{ page }}</span>
+      {% elsif page == 1 %}
+        <a class="paginationButton" href="{{ site.paginate_path | absolute_url |  replace: ':num/', '' }}">{{ page }}</a>
+      {% else %}
+        <a class="paginationButton" href="{{ site.paginate_path | absolute_url | replace: ':num', page }}">{{ page }}</a>
+      {% endif %}
+    {% endfor %}
+
+    {% if last_page_index < paginator.total_pages %}
+      <span>...</span>
+      <a class="paginationButton" href="{{ site.paginate_path | absolute_url |  replace: ':num/', paginator.total_pages }}">{{ paginator.total_pages }}</a>
+    {% endif %}
+
+    {% if paginator.next_page %}
+      <a class="paginationDir" href="{{ paginator.next_page_path | absolute_url }}">{{ next_text }}</a>
+    {% else %}
+      <span class="paginationDir">{{ next_text }}</span>
+    {% endif %}
+  </div>
+{% endif %}
