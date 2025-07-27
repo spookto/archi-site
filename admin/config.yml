@@ -5,8 +5,8 @@
 local_backend: true
 
 backend:
-  name: git-gateway
-  #repo: spookto/archi-site
+  name: github
+  repo: spookto/archi-site
   branch: main # Branch to update (optional; defaults to master)
 media_folder: "assets/images"
 public_folder: "/archi-site/assets/images"
