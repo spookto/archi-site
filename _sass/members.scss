@@ -1,0 +1,51 @@
+#membersList {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.membersGrid {
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(190px, 1fr));
+  margin: 0;
+  padding: 0;
+  margin-top: 1em;
+  gap: 16px;
+}
+
+.membersGrid li {
+  list-style: none;
+  margin-bottom: 4em;
+}
+
+.memberGroupText {
+  font-size: 2rem;
+  line-height: 1rem;
+}
+
+.memberDateText {
+  font-size: 1.6em;
+  font-weight: 600;
+  color: #535353;
+}
+
+.memberImage {
+  aspect-ratio: 0.665;
+  width: 100%;
+  clip-path: fill-box;
+}
+
+/* Medium devices (1000px and below) */
+@media only screen and (max-width: 1000px) {
+  .membersGrid {
+    display: grid;
+    grid-template-columns: repeat( auto-fill, minmax(160px, 1fr));
+  }
+}
+
+/* Small devices (768px and below) */
+@media only screen and (max-width: 768px) {
+  .membersGrid {
+    display: grid;
+    justify-items: center;
+  }
+}

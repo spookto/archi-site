@@ -2,15 +2,51 @@
 title: Team Members
 short_name: members
 ---
-<ul id="membersGrid">
-{% for i in (1..5) %}
-  {% for member in site.team_members %}
-    <li>
-      <h2>{{ member.name }}</h2>
-      <img src="{{ member.image }}" class="memberImage"/>
-      <h3>{{ member.position }}</h3>
-      <p>{{ member.content | markdownify }}</p>
-    </li>
+<div id="membersList">
+  <!-- Groups ! -->
+  {% assign sorted_teams = site.team_members | sort: "date_start" %}
+  {% for members_group in sorted_teams %}
+    <div>
+      <h1 class="textMain memberGroupText">{{ members_group.name }}</h1>
+
+      <h2 class="memberDateText">
+        <!-- Store start year ! -->
+        {% capture start_year %} {{ members_group.date_start | date: "%Y" }} {% endcapture %}
+        <!-- Write start month ! -->
+        {{ members_group.date_start | date: "%B " }}
+        <!-- Write start month ! -->
+        {% if members_group.date_end.size == 0 %}
+          {{ start_year }}
+        {% else %}
+          {% capture end_year %} {{ members_group.date_end | date: "%Y" }} {% endcapture %}
+          {% if start_year == end_year %}
+            - {{ members_group.date_end | date: "%B %Y" }}
+          {% else %}
+            {{ start_year }} - {{ members_group.date_end | date: "%B %Y" }}
+          {% endif %}
+        {% endif %}
+      </h2>
+
+      <ul class="membersGrid">
+        <!-- Members ! -->
+        {% for mimage in members_group.member_images %}
+          <li>
+            <img src="{{ mimage }}" class="memberImage" />
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
   {% endfor %}
-  {% endfor %}
-</ul>
+  <div>
+    <h1 class="textMain memberGroupText">Founder</h1>
+    <ul class="membersGrid">
+      <li>
+        <img src="{{ site.data.founder.image }}" class="memberImage" />
+      </li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+</div>

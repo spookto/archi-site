@@ -246,19 +246,6 @@ nav a:not(:last-child) {
 }
 
 // Page Specifics
-.memberImage {
-  aspect-ratio: 1;
-  object-fit: cover;
-  width: 200px;
-  box-shadow: 10px 10px $main-color;
-}
-
-#membersGrid {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  gap: 16px;
-}
-
 .mentionBox {
   display: flex;
   flex-direction: column;
@@ -347,10 +334,6 @@ ul:has(> li p [dir="rtl"]), ol:has(> li p [dir="rtl"]) {
   #headerMenuButtonLabel {
     display: block;
   }
-  #membersGrid {
-    display: grid;
-    grid-template-columns: auto auto;
-  }
 }
 
 /* Small devices (768px and below) */
@@ -365,12 +348,6 @@ ul:has(> li p [dir="rtl"]), ol:has(> li p [dir="rtl"]) {
     padding: 32px;
     min-width: 100%;
   }
-  #membersGrid {
-    display: grid;
-    grid-template-columns: auto;
-    justify-items: center;
-  }
-
   #articlesContainer {
     display: flex;
     flex-direction: column;
