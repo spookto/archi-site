@@ -8,6 +8,7 @@ backend:
   name: github
   repo: spookto/archi-site
   branch: main # Branch to update (optional; defaults to master)
+  base_url: https://sveltia-cms-auth.ahmed03sabah.workers.dev
 media_folder: "assets/images"
 public_folder: "/archi-site/assets/images"
 
