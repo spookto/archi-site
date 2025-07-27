@@ -33,10 +33,15 @@ collections:
     editor:
       preview: false
     fields:
-      - { label: "Display Name", name: "name", widget: "string" }
-      - { label: "Position", name: "position", widget: "string" }
-      - { label: "Image", name: "image", widget: "image" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Group Name", name: "name", widget: "string" }
+      - { label: "Start Date", name: "date_start", widget: "datetime", format: "'YYYY-MM-DD'", time_format: false }
+      - { label: "End Date", name: "date_end", widget: "datetime", format: "'YYYY-MM-DD'", time_format: false, required: false }
+      - label: "Members"
+        name: "member_images"
+        widget: "list"
+        allow_add: true
+        minimize_collapsed: true
+        field: {label: Image, name: image, widget: image}
 
   - name: "mentions"
     label: "Mentions"
@@ -75,6 +80,13 @@ collections:
             name: "items"
             widget: "list"
             fields:
-              - { label: Name, name: title, widget: string }
-              - { label: Font Awesome Icon, name: icon, widget: string }
+              - { label: Name, name: title, widget: string, default: "Linkedin" }
+              - { label: Font Awesome Icon, name: icon, widget: string, default: "fa-brands fa-linkedin" }
               - { label: Link, name: link, widget: string }
+
+      - label: "Founder"
+        name: "founder"
+        file: "_data/founder.yml"
+        fields:
+          - { label: "Name", name: "name", widget: "string" }
+          - { label: "Image", name: "image", widget: "image" }
