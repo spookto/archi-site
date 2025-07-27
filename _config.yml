@@ -33,6 +33,7 @@ collections:
   team_members:
   mentions:
   partners:
+  authors:
 
 sass:
   quiet_deps: true
