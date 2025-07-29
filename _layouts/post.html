@@ -15,7 +15,13 @@ layout: base
 
 <div class="contentBackground">
   <div class="contentDiv">
-    <div class="postContainer" dir="auto">
+    <div
+      class="postContainer"
+      dir={% if page.rtl %}
+      "rtl"
+      {% else %}
+      "auto"
+      {% endif %}>
       {{ content }}
     </div>
   </div>

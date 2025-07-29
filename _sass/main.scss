@@ -372,6 +372,11 @@ p:dir(rtl) ~ .followSiblingP {
   padding-bottom: 5vh;
   font-size: 1.7em;
   word-spacing: 0.2em;
+  line-height: 2.0;
+}
+
+.postContainer a {
+  color: $main-color;
 }
 
 .postContainer img {
