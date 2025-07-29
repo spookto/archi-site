@@ -2,6 +2,20 @@
 title: Articles
 short_name: articles
 ---
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+      var scrollpos = sessionStorage.getItem('scrollpos');
+      if (scrollpos) {
+        window.scrollTo(0, scrollpos);
+        sessionStorage.removeItem('scrollpos');
+      }
+  });
+
+  window.onbeforeunload = function(e) {
+      sessionStorage.setItem('scrollpos', window.scrollY);
+  };
+</script>
+
 <div id="articlesContainer">
   {% for post in paginator.posts %}
     {% include post-box.html post=post %}
@@ -11,23 +25,20 @@ short_name: articles
 <!-- Pagination links -->
 {% if paginator.total_pages > 1 %}
   <div class="pagination">
-    {% assign prev_text = "<" %}
-    {% assign next_text = ">" %}
-
     {% if paginator.previous_page %}
-      <a class="paginationDir" href="{{ paginator.previous_page_path | absolute_url }}">{{ prev_text }}</a>
+      <a class="paginationDir" href="{{ paginator.previous_page_path | absolute_url }}">{{ site.page_text_prev }}</a>
     {% else %}
-      <span class="paginationDir">{{ prev_text }}</span>
+      <span class="paginationDir">{{ site.page_text_prev }}</span>
     {% endif %}
 
-    {% assign first_page_index = paginator.page | minus: 2 %}
-    {% assign last_page_index = paginator.page | plus: 2 %}
+    {% assign first_page_index = paginator.page | minus: site.page_max_buttons_per_dir %}
+    {% assign last_page_index = paginator.page | plus: site.page_max_buttons_per_dir %}
 
     {% if first_page_index < 1 %}
       {% assign first_page_index = 1 %}
-      {% assign last_page_index = 5 | at_most: paginator.total_pages %}
+      {% assign last_page_index = site.page_max_buttons_per_dir | times: 2 | plus: 1 | at_most: paginator.total_pages %}
     {% elsif last_page_index > paginator.total_pages %}
-      {% assign first_page_index = paginator.total_pages | minus: 4 | at_least: 1 %}
+      {% assign first_page_index = paginator.total_pages | minus: site.page_max_buttons_per_dir | minus: site.page_max_buttons_per_dir | at_least: 1 %}
       {% assign last_page_index = paginator.total_pages %}
     {% endif %}
 
@@ -52,9 +63,9 @@ short_name: articles
     {% endif %}
 
     {% if paginator.next_page %}
-      <a class="paginationDir" href="{{ paginator.next_page_path | absolute_url }}">{{ next_text }}</a>
+      <a class="paginationDir" href="{{ paginator.next_page_path | absolute_url }}">{{ site.page_text_next }}</a>
     {% else %}
-      <span class="paginationDir">{{ next_text }}</span>
+      <span class="paginationDir">{{ site.page_text_next }}</span>
     {% endif %}
   </div>
 {% endif %}

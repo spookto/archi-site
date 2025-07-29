@@ -8,5 +8,84 @@
   </head>
   <body>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <script type="module">
+          var BlogPreview = createClass({
+            getInitialState: function () {
+              return { author: {}, authors: [] };
+            },
+
+            componentDidMount: function () {
+              this.props.getCollection("authors").then((authors) => {
+                const authorsData = authors.map((a) => a.getIn(["data"]));
+                const postAuthor = this.props.entry.getIn(["data", "author"]);
+                const author = authorsData.find((a) => a.name === postAuthor);
+                this.setState({ author, authors: authorsData });
+              });
+            },
+
+            componentDidUpdate: function () {
+              const postAuthor = this.props.entry.getIn(["data", "author"]);
+              if (
+                this.state.author &&
+                Object.keys(this.state.author).length &&
+                this.state.author.name === postAuthor
+              ) {
+                return;
+              }
+              if (postAuthor && this.state.authors.length) {
+                const author = this.state.authors.find((a) => a.name === postAuthor);
+                this.setState({ author });
+              }
+            },
+
+
+            render: function() {
+              const data = this.props.entry.get("data").toJS();
+
+              const headerImage = data.pageheader;
+              const header = this.props.getAsset(headerImage);
+              const title = data.title;
+              const author = data.author;
+              const rtl = data.rtl;
+
+              var entry = this.props.entry;
+
+              let author_name = "";
+
+              if (this.state.author && Object.keys(this.state.author).length) {
+                author_name = this.state.author.display_name;
+              }
+
+              const date = typeof data.date === "string" ? new Date(data.date) : data.date;
+              let formattedDate = "";
+              if (date) {
+                formattedDate = Intl.DateTimeFormat("en-GB", {
+                  dateStyle: "short",
+                }).format(date);
+              }
+
+              let direction = "ltr"
+              if (rtl) {
+                direction = "rtl"
+              }
+
+              return h('div', {},
+                h('img', {width: "100%",src: header.toString()}),
+                h('h1', {}, title),
+                h(
+                  "span",
+                  {},
+                  h("p", {}, author_name),
+                  h("p", {}, formattedDate),
+                ),
+                h('hr', {}),
+                h('div', {"className": "text", dir: direction}, this.props.widgetFor('body'))
+              );
+
+            }
+          });
+
+          CMS.registerPreviewTemplate("blog", BlogPreview);
+    </script>
   </body>
 </html>

@@ -75,8 +75,9 @@ collections:
       preview: false
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Arabic Title?", name: "rtl", widget: "boolean", default: false}
-      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Image", name: "cover", widget: "image" }
       - { label: "Link", name: "link", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
 

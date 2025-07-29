@@ -9,6 +9,9 @@ copyright-year: 2025
 
 paginate: 6
 paginate_path: "/articles/:num/"
+page_text_next: ">"
+page_text_prev: "<"
+page_max_buttons_per_dir: 2
 
 defaults:
   -

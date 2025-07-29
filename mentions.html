@@ -2,12 +2,30 @@
 title: Mentions
 short_name: mentions
 ---
-{% for mention in site.mentions %}
-    <a href="{{ mention.link }}" class="mentionContainer">
-        <div class="mentionBox boxContainer">
-            <img src="{{ mention.image }}">
-            <h1 {% if mention.rtl %}style="text-align:right;"{% endif %}>{{ mention.title }}</h1>
-            <!--p>{{ mention.text }}</p!-->
-        </div>
-    </a>
-{% endfor %}
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+      var scrollpos = sessionStorage.getItem('scrollpos');
+      if (scrollpos) {
+        window.scrollTo(0, scrollpos);
+        sessionStorage.removeItem('scrollpos');
+      }
+  });
+
+  window.onbeforeunload = function(e) {
+      sessionStorage.setItem('scrollpos', window.scrollY);
+  };
+</script>
+
+<!-- HACK: This fixes so many problems without duplicating code! -->
+<div id="articlesContainer">
+  {% comment %}
+    {% for mention in site.mentions %}
+    {% include post-box.html post=mention is_mention=true %}
+    {% endfor %}
+  {% endcomment %}
+</div>
+
+<!-- GITHUB PAGES doesn't support paginate-v2, we have to create our own for other collections ! -->
+<script type="text/javascript">
+  {% include mentionPaginator.js %}
+</script>

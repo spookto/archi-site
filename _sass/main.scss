@@ -259,10 +259,20 @@ nav a:not(:last-child) {
 .mainImageText {
   position: absolute;
   bottom: 8px;
-  left: 0;
   padding-left: 9px;
+  padding-right: 9px;
   font-size: min(60px, 7vw);
   color: $text-white
+}
+
+.mainImageText:dir(ltr) {
+  left: 0;
+  padding-right: 0;
+}
+
+.mainImageText:dir(rtl) {
+  right: 0;
+  padding-left: 0;
 }
 
 .mainImageText > * {
@@ -282,6 +292,7 @@ nav a:not(:last-child) {
   box-shadow: 10px 10px $main-color;
   margin-bottom: 18px;
   padding: 16px;
+  text-decoration: none;
 }
 
 .mentionBox h1 {
@@ -289,13 +300,10 @@ nav a:not(:last-child) {
 }
 
 .mentionBox img {
-  max-height: 500px;
+  aspect-ratio: 1.5;
   background-color: #ffc232;
   object-fit: contain;
-}
-
-.mentionContainer {
-  text-decoration: none;
+  flex-grow: 1;
 }
 
 #articlesContainer {

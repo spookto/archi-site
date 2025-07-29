@@ -5,7 +5,7 @@ layout: base
   {% assign author = site.authors | where: "name", page.author | first %}
 
   <img class="mainImage postImage" src="{{ page.pageheader }}">
-  <div class="mainImageText postImageText">
+  <div class="mainImageText postImageText" dir="auto">
     <h1 class="bgMainColor">{{ page.title }}</h1>
     <p class="postInfo bgMainColor">
       By
@@ -17,7 +17,7 @@ layout: base
 
 <div class="contentBackground">
   <div class="contentDiv">
-    <div class="postContainer">
+    <div class="postContainer" dir="auto">
       {{ content }}
     </div>
   </div>
