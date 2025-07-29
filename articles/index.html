@@ -11,8 +11,8 @@ short_name: articles
 <!-- Pagination links -->
 {% if paginator.total_pages > 1 %}
   <div class="pagination">
-    {% assign prev_text = "&#x22D8;" %}
-    {% assign next_text = "&#x22D9;" %}
+    {% assign prev_text = "<" %}
+    {% assign next_text = ">" %}
 
     {% if paginator.previous_page %}
       <a class="paginationDir" href="{{ paginator.previous_page_path | absolute_url }}">{{ prev_text }}</a>

@@ -3,6 +3,20 @@ title: Team Members
 short_name: members
 ---
 <div id="membersList">
+  <!-- Founder ! -->
+  <div>
+    <h1 class="textMain memberGroupText">Founder</h1>
+    <ul class="membersGrid">
+      <li>
+        <img src="{{ site.data.founder.image }}" class="memberImage" />
+      </li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+
   <!-- Groups ! -->
   {% assign sorted_teams = site.team_members | sort: "date_start" %}
   {% for members_group in sorted_teams %}
@@ -37,16 +51,4 @@ short_name: members
       </ul>
     </div>
   {% endfor %}
-  <div>
-    <h1 class="textMain memberGroupText">Founder</h1>
-    <ul class="membersGrid">
-      <li>
-        <img src="{{ site.data.founder.image }}" class="memberImage" />
-      </li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul>
-  </div>
 </div>

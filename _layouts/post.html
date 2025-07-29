@@ -2,19 +2,21 @@
 layout: base
 ---
 <div class="mainImageDiv">
-  <img class="mainImage postImage" src="{{ page.cover }}">
+  {% assign author = site.authors | where: "name", page.author | first %}
+
+  <img class="mainImage postImage" src="{{ page.pageheader }}">
   <div class="mainImageText postImageText">
-    <h1>{{ page.title }}</h1>
-    <p class="postInfo">
+    <h1 class="bgMainColor">{{ page.title }}</h1>
+    <p class="postInfo bgMainColor">
       By
-      <span class="author">{{ page.author }}</span>
+      <span class="author">{{ author.display_name }}</span>
       {{ page.date | date: "%d %B %Y" }}
     </p>
   </div>
 </div>
 
 <div class="contentBackground">
-  <div class="bgPaper contentDiv">
+  <div class="contentDiv">
     <div class="postContainer">
       {{ content }}
     </div>
