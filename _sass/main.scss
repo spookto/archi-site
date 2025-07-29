@@ -283,6 +283,10 @@ nav a:not(:last-child) {
   font-size: min(60px, 7vw);
 }
 
+p:dir(rtl) ~ .followSiblingP {
+  text-align: right;
+  padding-top: 6px;
+}
 
 // Page Specifics
 .mentionBox {
@@ -329,7 +333,8 @@ nav a:not(:last-child) {
   background: none;
   width: 100%;
   //max-height: 400px;
-  object-fit: contain;
+  aspect-ratio: 3.2;
+  object-fit: cover;
 }
 
 .postImageText {
@@ -343,11 +348,11 @@ nav a:not(:last-child) {
 }
 
 .postImageText > * {
-  padding-right: 0.6em;
+  padding-right: 1.0rem;
 }
 
 .postInfo {
-  font-size: 0.5em;
+  font-size: 0.7em;
   color: #ddd;
   width: fit-content;
 }
@@ -365,11 +370,16 @@ nav a:not(:last-child) {
   border-right: 2px solid #ddd;
   padding: 1em 2em;
   padding-bottom: 5vh;
+  font-size: 1.7em;
+  word-spacing: 0.2em;
 }
 
 .postContainer img {
   display: block;
-  min-width: 100%;
+  max-width: 100%;
+
+  margin-left: auto;
+  margin-right: auto;
 
   align-self: center;
   align-items: center;
@@ -379,6 +389,17 @@ nav a:not(:last-child) {
 
 .postContainer span {
   width: 100%;
+}
+
+.postContainer p:has(> img) {
+  font-style: normal;
+  font-size: smaller;
+  text-align: center;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  color: $inactive-color;
 }
 
 .contentDiv:has(> .postContainer) {
@@ -435,6 +456,11 @@ ul:has(> li p [dir="rtl"]), ol:has(> li p [dir="rtl"]) {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  transition: 0.3s;
+}
+
+.partnerBox:hover {
+  transform: translateY(-10px)
 }
 
 .pagination {

@@ -71,15 +71,15 @@
 
               return h('div', {},
                 h('img', {width: "100%",src: header.toString()}),
-                h('h1', {}, title),
+                h('h1', {dir: 'auto'}, title),
                 h(
                   "span",
                   {},
-                  h("p", {}, author_name),
+                  h("p", {dir: 'auto'}, author_name),
                   h("p", {}, formattedDate),
                 ),
                 h('hr', {}),
-                h('div', {"className": "text", dir: direction}, this.props.widgetFor('body'))
+                h('div', {"className": "text", dir: direction, style: "*"}, this.props.widgetFor('body'))
               );
 
             }

@@ -13,5 +13,5 @@
     {% assign author = site.authors | where: "name", include.post.author | first %}
     <p dir="auto">{{ author.display_name }}</p>
   {% endif %}
-  <p>{{ include.post.date | date: "%d/%m/%Y" }}</p>
+  <p class="followSiblingP">{{ include.post.date | date: "%d/%m/%Y" }}</p>
 </a>

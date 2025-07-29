@@ -6,13 +6,14 @@ const content = document.getElementById("contentHolder");
 const mentionsCount = {{ site.mentions.size }};
 
 const mentions = [];
-{% for mention in site.mentions %}
+{% assign sortedMentions = site.mentions | sort: 'date' | reverse %}
+{% for mention in sortedMentions %}
 mentions.push([
-  "{{ mention.title }}",
-  "{{ mention.cover }}",
-  "{{ mention.link }}",
-  "{{ mention.author }}",
-  "{{ mention.date }}"
+  `{{ mention.title }}`,
+  `{{ mention.cover }}`,
+  `{{ mention.link }}`,
+  `{{ mention.author }}`,
+  `{{ mention.date }}`
 ]);
 {% endfor %}
 
@@ -55,6 +56,7 @@ for (let index = firstEntry; index < lastEntry; index++) {
   console.log(date.toDateString());
 
   var dateText = document.createElement('p');
+  dateText.className = "followSiblingP"
   dateText.innerHTML = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
   aRef.appendChild(dateText);
 }

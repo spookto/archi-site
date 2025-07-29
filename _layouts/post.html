@@ -8,10 +8,8 @@ layout: base
   <div class="mainImageText postImageText" dir="auto">
     <h1 class="bgMainColor">{{ page.title }}</h1>
     <p class="postInfo bgMainColor">
-      By
       <span class="author">{{ author.display_name }}</span>
-      {{ page.date | date: "%d %B %Y" }}
-    </p>
+      │ {{ page.date | date: "%d/%m/%Y" }}</p>
   </div>
 </div>
 
