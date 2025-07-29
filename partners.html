@@ -44,9 +44,47 @@ short_name: partners
   </div>
   <div id="partnerLinksContainer">
     {% for partner in site.partners %}
-      <a href="{{ partner.link }}" class="boxContainer">
+      <a
+        href="{{ partner.link }}"
+        class="boxContainer partnerBox"
+        name="{{ partner.title }}|{{ partner.titlear }}">
         <img src="{{ partner.image }}">
       </a>
     {% endfor %}
   </div>
+
+  <div id="move" class="boxContainer">
+    <h4 class="content-ar" dir="rtl">TEST AR</h4>
+    <h4 class="content-en">TEST EN</h4>
+  </div>
 </section>
+
+<script>
+  const move = document.getElementById("move");
+
+  const partners = [...document.getElementsByClassName("partnerBox")]
+  partners.forEach((element) => {
+    element.addEventListener("pointerenter", (event) => {
+      console.log("Entered ", element.name);
+      move.getElementsByClassName("content-en")[0].textContent = element.name.split("|")[0];
+      move.getElementsByClassName("content-ar")[0].textContent = element.name.split("|")[1];
+      move.style.setProperty('visibility', 'visible');
+    })
+
+    element.addEventListener("pointerleave", (event) => {
+      console.log("Left ", element.name);
+      //move.textContent = "";
+      move.style.setProperty('visibility', 'hidden');
+    })
+  });
+
+  document.body.onpointermove = event => {
+    const { clientX, clientY } = event;
+
+    move.animate({
+      left: `${clientX + 16}px`,
+      top: `${clientY}px`
+
+    }, {duration: 10, fill: "forwards"})
+  }
+</script>

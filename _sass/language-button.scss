@@ -1,9 +1,13 @@
-#language-en:checked ~ .content-ar {
-  display: none;
+#language-en:checked {
+  ~ .content-ar, ~ * .content-ar {
+    display: none;
+  }
 }
 
-#language-ar:checked ~ .content-en {
-  display: none;
+#language-ar:checked {
+  ~ .content-en, ~ * .content-en {
+    display: none;
+  }
 }
 
 .btn {

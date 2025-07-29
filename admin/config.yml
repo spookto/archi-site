@@ -85,10 +85,12 @@ collections:
     label: "Partners"
     folder: "_partners/"
     create: true
+    slug: "{{title}}" # Filename template, e.g., YYYY-MM-DD-title.md
     editor:
       preview: false
     fields:
       - { label: "Title", name: "title", widget: "string" }
+      - { label: "Title Arabic", name: "titlear", widget: "string" }
       - { label: "Image", name: "image", widget: "image" }
       - { label: "Link", name: "link", widget: "string" }
 

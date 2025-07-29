@@ -468,6 +468,18 @@ span.paginationDir {
   color: $inactive-color
 }
 
+#move {
+  visibility: hidden;
+  position: fixed;
+  font-size: 1.5rem;
+  padding: 0.4em;
+  user-select: none;
+  pointer-events: none;
+
+  .content-en, .content-ar {
+    margin: 0;
+  }
+}
 // End Page Specifics
 
 /* Medium devices (1000px and below) */
