@@ -239,6 +239,7 @@ nav a:not(:last-child) {
   flex-grow: 1;
   margin: 0;
   padding: 48px;
+  width: 100%;
   min-width: 60vw;
 }
 
@@ -518,17 +519,15 @@ span.paginationDir {
 
 
 /* Large screen */
-@media only screen and (min-width: 1000px) {
+@media (min-width: 992px) {
   #headerMenuButtonLabel {
     display: none;
   }
   .contentDiv {
-    max-width: 60vw;
+    max-width: min(max(60vw, 1152px), 90vw);
   }
 }
 
-/* Portrait view */
-//@media only screen and (max-width: 1000px)
 @media (max-aspect-ratio: 1/1) {
   header {
     padding-top: 0;
