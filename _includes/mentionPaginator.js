@@ -42,7 +42,6 @@ for (let index = firstEntry; index < lastEntry; index++) {
   aRef.appendChild(img);
 
   var title = document.createElement('h2');
-  title.style = "flex-grow: 2;";
   title.innerHTML = mention[0];
   title.dir = "auto"
   aRef.appendChild(title);

@@ -208,6 +208,8 @@ nav a:not(:last-child) {
 .postBox h2 {
   font-size: min(32px, 7vw);
   line-height: 1.5em;
+  flex-grow: 1;
+  max-height: 3.1em;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2; /* number of lines to show */
