@@ -44,10 +44,7 @@ short_name: partners
   </div>
   <div id="partnerLinksContainer">
     {% for partner in site.partners %}
-      <a
-        href="{{ partner.link }}"
-        class="boxContainer partnerBox"
-        name="{{ partner.title }}|{{ partner.titlear }}">
+      <a class="boxContainer partnerBox" name="{{ partner.title }}|{{ partner.titlear }}">
         <img src="{{ partner.image }}">
       </a>
     {% endfor %}
