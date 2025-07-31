@@ -168,7 +168,7 @@ nav a:not(:last-child) {
 .bgPaper {
   color: $text-black;
   background-color: $background-light;
-  background-image: url("../images/paper.png");
+  background-image: url("../images/paper.jpg");
 }
 
 .bgMainColor {
@@ -229,7 +229,7 @@ nav a:not(:last-child) {
   align-items: center;
   flex-grow: 1;
   background-color: #dcdcdc;
-  background-image: url("../images/paper.png");
+  background-image: url("../images/paper.jpg");
   background-blend-mode: difference;
   align-self: stretch;
   background-repeat: repeat repeat;
