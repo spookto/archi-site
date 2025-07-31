@@ -57,61 +57,47 @@ short_name: partners
 </section>
 
 <script>
-  let show = false;
+  let clickShow = false;
   const move = document.getElementById("move");
 
   document.addEventListener("pointerdown", (event) => {
     console.log(event.target);
-    if (!event.target.closest(".partnerBox") && show) {
-      show = false;
+    if (!event.target.closest(".partnerBox")) {
       move.style.setProperty('visibility', 'hidden');
+    }
+    else {
+      clickShow = true;
+      setInformation(event.target);
+      move.style.setProperty('visibility', 'visible');
+      showMove(event.clientX, event.clientY, 0);
     }
   })
 
+  document.body.onpointermove = (event) => {
+    const { clientX, clientY } = event;
+
+    const closestElement = document.elementFromPoint(clientX, clientY);
+
+    if (!closestElement.closest(".partnerBox")) {
+      move.style.setProperty('visibility', 'hidden');
+    }
+    else {
+      setInformation(closestElement);
+      move.style.setProperty('visibility', 'visible');
+      showMove(clientX, clientY, 0);
+    }
+  }
+
   document.onscroll = (event) => {
-    if (show) {
-      show = false;
+    if (clickShow) {
+      clickShow = false;
       move.style.setProperty('visibility', 'hidden');
     }
   }
 
-  const partners = [...document.getElementsByClassName("partnerBox")]
-  partners.forEach((element) => {
-    element.addEventListener("pointerenter", (event) => {
-      console.log("Entered ", element.name);
-      move.getElementsByClassName("content-en")[0].textContent = element.name.split("|")[0];
-      move.getElementsByClassName("content-ar")[0].textContent = element.name.split("|")[1];
-      move.style.setProperty('visibility', 'visible');
-
-      const { clientX, clientY } = event;
-      showMove(clientX, clientY, 0);
-    })
-
-    element.addEventListener("pointerleave", (event) => {
-      if (!show)
-      {
-        console.log("Left ", element.name);
-        //move.textContent = "";
-        move.style.setProperty('visibility', 'hidden');
-      }
-    })
-
-    element.addEventListener("mouseleave", (event) => {
-      if (show)
-      {
-        show = false
-        move.style.setProperty('visibility', 'hidden');
-      }
-    })
-
-    element.addEventListener("pointerdown", (event) => {
-      show = true;
-    })
-  });
-
-  document.body.onpointermove = event => {
-    const { clientX, clientY } = event;
-    showMove(clientX, clientY, 10);
+  function setInformation(element) {
+    move.getElementsByClassName("content-en")[0].textContent = element.name.split("|")[0];
+    move.getElementsByClassName("content-ar")[0].textContent = element.name.split("|")[1];
   }
 
   function showMove(x, y, dur) {
