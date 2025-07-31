@@ -9,3 +9,5 @@ pages:
     url: members
   - title: Mentions
     url: mentions
+  - title: Events
+    url: events

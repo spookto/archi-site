@@ -31,12 +31,21 @@ defaults:
     values:
       permalink: /articles/:title
       layout: "post"
+  -
+    scope:
+      path: ""
+      type: "events"
+    values:
+      layout: "post"
 
 collections:
   team_members:
   mentions:
   partners:
   authors:
+  events:
+    output: true
+    permalink: /events/:title
 
 sass:
   quiet_deps: true

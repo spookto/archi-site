@@ -94,6 +94,21 @@ collections:
       - { label: "Image", name: "image", widget: "image" }
       - { label: "Link", name: "link", widget: "string" }
 
+  - name: "events"
+    label: "Events"
+    folder: "_events/"
+    create: true
+    slug: "{{title}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    editor:
+      preview: false
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Cover Image", name: "cover", widget: "image" }
+      - { label: "Page Header Image", name: "pageheader", widget: "image" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
   - name: "config"
     label: "Config"
     editor:
