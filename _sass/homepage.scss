@@ -50,6 +50,15 @@
   position: absolute;
   padding: 10px 13px;
   font-weight: bold;
+  min-width: 29vw;
+  aspect-ratio: 2.22;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  > * {
+
+  }
 }
 
 #homepageContactDiv {

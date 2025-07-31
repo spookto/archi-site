@@ -4,25 +4,28 @@ title: Home
 ---
 <div class="bgPaper centerContent">
   <div class="contentDiv" style="padding-top: 15px;">
-    <a href="{{ '/articles' | relative_url }}" class="boxContainer" style="max-width: min-content; padding: 0 7px;">
+    <a
+      href="{{ '/articles' | relative_url }}"
+      class="boxContainer"
+      style="max-width: min-content; padding: 0 7px;">
       <h1 style="font-size: 32px;">Articles</h1>
     </a>
     {% if site.posts.size > 0 %}
-    <div>
-      <div id="postPreviewsContainerH">
-        {% assign big_post = site.posts.first %}
-        {% include post-box.html post=big_post%}
+      <div>
+        <div id="postPreviewsContainerH">
+          {% assign big_post = site.posts.first %}
+          {% include post-box.html post=big_post %}
 
-        <div id="postPreviewsContainerV">
-        {% for post in site.posts offset:1 limit:2 %}
-        {% include post-box.html post=post%}
-        {% endfor %}
+          <div id="postPreviewsContainerV">
+            {% for post in site.posts offset: 1 limit: 2 %}
+              {% include post-box.html post=post %}
+            {% endfor %}
+          </div>
         </div>
       </div>
-    </div>
 
     {% else %}
-    <h3>No Articles Yet</h3>
+      <h3>No Articles Yet</h3>
     {% endif %}
 
   </div>
@@ -41,22 +44,33 @@ title: Home
   <div class="contentDiv bgPaper vflex homepageDiv">
     <img src="{{ 'assets/images/main_background_top.png' | relative_url }}">
     <img src="{{ 'assets/images/main_background_bottom.png' | relative_url }}">
-    <p class="bgMainColor mainpageTextBlock" style="font-size: 1.4em; top: 0.93%;">
-      Our Goals
-    </p>
-    <p class="bgMainColor mainpageTextBlock" style="top: 17.04%; right: 7.85%; max-width: 580px; padding: 22px 20px;">
-      Encouraging students to participate in student and community activities in the fields related to architecture, environment, and arts
-    </p>
-    <p class="bgMainColor mainpageTextBlock" style="left: 77px; top: 30.6%; max-width: 620px; padding: 30px 10px;">
-      Promoting cooperation and guidance through joint work among students, educational institutions, and experts
-    </p>
-    <p class="bgMainColor mainpageTextBlock" style="right: 1.814%; top: 64.08%; max-width: 580px; padding: 84px 10px;">
-      Providing students with the knowledge and necessary skills to make use of after graduation
-    </p>
-    <p class="bgMainColor mainpageTextBlock" style="left: 9.79%; top: 74.44%; max-width: 640px; padding: 54px 14px;">
-      Launching a platform on social media to raise awareness and spread architectural content and activities
-    </p>
+    <div class="bgMainColor mainpageTextBlock" style="font-size: 1.4em; top: 0.93%; min-width: 0;">
+      <p>
+        Our Goals
+      </p>
+    </div>
+    <div class="bgMainColor mainpageTextBlock" style="top: 17.04%; right: 7.85%; max-width: 580px;">
+      <p>
+        Encouraging students to participate in student and community activities in the fields related to architecture, environment, and arts
+      </p>
+    </div>
+    <div class="bgMainColor mainpageTextBlock" style="left: 77px; top: 30.6%; max-width: 620px;">
+      <p>
+        Promoting cooperation and guidance through joint work among students, educational institutions, and experts
+      </p>
+    </div>
+    <div class="bgMainColor mainpageTextBlock" style="right: 1.814%; top: 64.08%; max-width: 580px;">
+      <p>
+        Providing students with the knowledge and necessary skills to make use of after graduation
+      </p>
+    </div>
+    <div class="bgMainColor mainpageTextBlock" style="left: 9.79%; top: 74.44%; max-width: 640px;">
+      <p>
+        Launching a platform on social media to raise awareness and spread architectural content and activities
+      </p>
+    </div>
   </div>
+
   <div class="contentDiv bgPaper vflex homepageDiv">
     <img src="{{ 'assets/images/main_background_contact.png' | relative_url }}">
     <div id="homepageContactDiv">
