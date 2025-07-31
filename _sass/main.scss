@@ -541,7 +541,7 @@ span.paginationDir {
 
 
 /* Large screen */
-@media (min-width: 992px) {
+@media (min-width: 992px), (min-aspect-ratio: 1/1) {
   #headerMenuButtonLabel {
     display: none;
   }
