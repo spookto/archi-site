@@ -1,11 +1,16 @@
 #postPreviewsContainerH {
   display: flex;
   flex-direction: row;
-  gap: 30px;
+  gap: min(30px, 1vw);
+  width: 100%;
 }
 
-#postPreviewsContainerH a {
-  flex-grow: 3;
+#postPreviewsContainerH > a {
+  flex-grow: 1;
+  h2 {
+    padding-bottom: 0.2em;
+    margin-bottom: auto;
+  }
 }
 
 #postPreviewsContainerV {
@@ -13,6 +18,14 @@
   max-height: 100%;
   display: flex;
   flex-direction: column;
+
+  > a {
+    font-size: 1.2em;
+    flex-grow: 1;
+    h2 {
+      margin-bottom: auto;
+    }
+  }
 }
 
 #whoWeAreDiv {
@@ -88,6 +101,11 @@
 
 }
 
+@media (max-aspect-ratio: 1/1) {
+  .homepageDiv {
+    padding: 0;
+  }
+}
 /* Small devices (768px and below) */
 @media only screen and (max-width: 768px) {
   #postPreviewsContainerH {

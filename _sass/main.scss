@@ -161,14 +161,14 @@ nav a:not(:last-child) {
   font-weight: bolder;
   text-align: center;
   align-items: stretch;
-  font-size: 200%;
+  font-size: min(4.5em, 8vw);
   background-color: $main-color;
   color: $text-white;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 2;
+  z-index: 100;
 }
 
 #headerMenuAnchor {
@@ -236,9 +236,9 @@ nav a:not(:last-child) {
 
 .postBox h2 {
   font-size: max(min(1.3em, 2.2vw), 22px);
-  line-height: 1.5em;
   flex-grow: 1;
-  max-height: 3.1em;
+  line-height: 1.5em;
+  max-height: 3.2em;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2; /* number of lines to show */
