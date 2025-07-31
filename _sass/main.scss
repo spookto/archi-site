@@ -11,6 +11,7 @@ $navigation-font-size: 25px;
   padding: 0;
   font-family: 'Cairo', sans-serif;
   box-sizing: border-box;
+  z-index: inherit;
 }
 
 body {
@@ -75,6 +76,15 @@ a {
   user-select: none;
   pointer-events: all;
 }
+
+.absoluteFill {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
 
 span {
   display: inline-block;
@@ -185,6 +195,14 @@ nav a:not(:last-child) {
   color: $text-white;
   background-color: $main-color;
 }
+
+.bgMainPaperBlack {
+  background-color: #dcdcdc;
+  background-image: url("../images/paper.jpg");
+  background-blend-mode: difference;
+  align-self: stretch;
+  background-repeat: repeat repeat;
+}
 // Background End
 
 // Text Colors Begin
@@ -238,11 +256,6 @@ nav a:not(:last-child) {
   flex-direction: column;
   align-items: center;
   flex-grow: 1;
-  background-color: #dcdcdc;
-  background-image: url("../images/paper.jpg");
-  background-blend-mode: difference;
-  align-self: stretch;
-  background-repeat: repeat repeat;
 }
 
 .contentDiv {

@@ -10,7 +10,13 @@ layout: base
   </div>
 {% endif %}
 <div class="contentBackground">
-  <div class="bgPaper contentDiv" id="contentHolder">
-    {{ content }}
+  <div
+    class="contentDiv"
+    id="contentHolder"
+    style="position: relative;">
+    <div class="bgPaper noSelect absoluteFill" style="z-index: -1;"></div>
+    <section style="z-index: 10;">
+      {{ content }}
+    </section>
   </div>
 </div>

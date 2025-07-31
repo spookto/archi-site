@@ -1,12 +1,13 @@
 <!-- _layouts/base.html -->
 <!DOCTYPE html>
 <html lang="en">
-{% include common-head.html %}
-<body>
-  {% include header.html %}
-  <div id="main">
-    {{ content }}
-  </div>
-  {% include footer.html %}
-</body>
+  {% include common-head.html %}
+  <body>
+    {% include header.html %}
+    <div id="main" style="position: relative;">
+      <div class="bgMainPaperBlack noSelect absoluteFill" style="z-index: -10;"></div>
+      {{ content }}
+    </div>
+    {% include footer.html %}
+  </body>
 </html>
