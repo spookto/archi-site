@@ -576,7 +576,11 @@ span.paginationDir {
     width: 100%;
   }
   .postImageText {
-    position: relative;
+    position: static;
+    > * {
+      min-width: 100%;
+      width: 100%;
+    }
   }
   .pagination {
     font-size: 1.4em;
