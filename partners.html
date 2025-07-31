@@ -44,20 +44,36 @@ short_name: partners
   </div>
   <div id="partnerLinksContainer">
     {% for partner in site.partners %}
-      <a class="boxContainer partnerBox" name="{{ partner.title }}|{{ partner.titlear }}">
-        <img src="{{ partner.image }}">
+      <a class="boxContainer partnerBox yesSelect" name="{{ partner.title }}|{{ partner.titlear }}">
+        <img src="{{ partner.image }}" class="noSelect">
       </a>
     {% endfor %}
   </div>
 
-  <div id="move" class="boxContainer">
+  <div id="move" class="boxContainer noSelect">
     <h4 class="content-ar" dir="rtl">TEST AR</h4>
     <h4 class="content-en">TEST EN</h4>
   </div>
 </section>
 
 <script>
+  let show = false;
   const move = document.getElementById("move");
+
+  document.addEventListener("pointerdown", (event) => {
+    console.log(event.target);
+    if (!event.target.closest(".partnerBox") && show) {
+      show = false;
+      move.style.setProperty('visibility', 'hidden');
+    }
+  })
+
+  document.onscroll = (event) => {
+    if (show) {
+      show = false;
+      move.style.setProperty('visibility', 'hidden');
+    }
+  }
 
   const partners = [...document.getElementsByClassName("partnerBox")]
   partners.forEach((element) => {
@@ -66,22 +82,45 @@ short_name: partners
       move.getElementsByClassName("content-en")[0].textContent = element.name.split("|")[0];
       move.getElementsByClassName("content-ar")[0].textContent = element.name.split("|")[1];
       move.style.setProperty('visibility', 'visible');
+
+      const { clientX, clientY } = event;
+      showMove(clientX, clientY, 0);
     })
 
     element.addEventListener("pointerleave", (event) => {
-      console.log("Left ", element.name);
-      //move.textContent = "";
-      move.style.setProperty('visibility', 'hidden');
+      if (!show)
+      {
+        console.log("Left ", element.name);
+        //move.textContent = "";
+        move.style.setProperty('visibility', 'hidden');
+      }
+    })
+
+    element.addEventListener("mouseleave", (event) => {
+      if (show)
+      {
+        show = false
+        move.style.setProperty('visibility', 'hidden');
+      }
+    })
+
+    element.addEventListener("pointerdown", (event) => {
+      show = true;
     })
   });
 
   document.body.onpointermove = event => {
     const { clientX, clientY } = event;
+    showMove(clientX, clientY, 10);
+  }
+
+  function showMove(x, y, dur) {
+    x = Math.min(x, document.body.clientWidth - move.clientWidth - 32);
 
     move.animate({
-      left: `${clientX + 16}px`,
-      top: `${clientY}px`
+      left: `${x + 16}px`,
+      top: `${y}px`,
 
-    }, {duration: 10, fill: "forwards"})
+    }, {duration: dur, fill: "forwards"})
   }
 </script>

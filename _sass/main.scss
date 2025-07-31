@@ -66,6 +66,16 @@ a {
   background-color: #fff;
 }
 
+.noSelect {
+  user-select: none;
+  pointer-events: none;
+}
+
+.yesSelect {
+  user-select: none;
+  pointer-events: all;
+}
+
 span {
   display: inline-block;
 }
@@ -508,8 +518,7 @@ span.paginationDir {
   position: fixed;
   font-size: 1.5rem;
   padding: 0.4em;
-  user-select: none;
-  pointer-events: none;
+  max-width: 50vw;
 
   .content-en, .content-ar {
     margin: 0;
