@@ -1,0 +1,38 @@
+#search-form {
+  height: 64px;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  margin-bottom: 4rem;
+  align-items: stretch;
+}
+
+#search-input-field {
+  flex: 1;
+  font-size: min(1.8em, 5vw);
+  border: solid $inactive-color 2px;
+  padding: 0 4px;
+}
+
+.controls {
+  aspect-ratio: 1 / 1;
+}
+
+#search-button {
+  cursor: pointer;
+  height: 100%;
+  aspect-ratio: 1;
+  border: none;
+  font-size: min(1.5em, 5vw);
+  background: $main-color;
+  color: $text-white;
+}
+
+#search-button:hover {
+  border: solid adjust-color($color: $main-color, $lightness: 10%) 6px;
+}
+
+#search-button:active {
+  color: $main-color;
+  background: $text-white;
+}

@@ -23,140 +23,233 @@ const objects = [];
     {% assign author = author.display_name %}
   {% endif %}
 
-  objects.push([
-    `{{ object.title }}`,
-    `{{ object.cover }}`,
-    `{{ target_link }}`,
-    `{{ author }}`,
-    `{{ object.date }}`
-  ]);
+  objects.push({
+    "name": `{{ object.title }}`,
+    "image": `{{ object.cover }}`,
+    "url": `{{ target_link }}`,
+    "author": `{{ author }}`,
+    "authorRaw": `{{ object.author }}`,
+    "date": `{{ object.date }}`,
+    "refIndex": `{{ forloop.index | minus: 1}}`
+  });
 {% endfor %}
-
-const pageCountMax = Math.ceil(objectsCount / entriesPerPage);
+console.log(objects);
 
 const urlParams = new URLSearchParams(window.location.search);
-const page = Math.min(Math.max(Number(urlParams.get('page')), 1) || 1, pageCountMax);
-
-const firstEntry = (entriesPerPage * (page - 1));
-const lastEntry = Math.min(entriesPerPage * page, objectsCount);
+const page = Math.max(Number(urlParams.get('page')), 1) || 1;
 
 const objectsGrid = document.getElementById('articlesContainer');
 
-// Add object boxes
-for (let index = firstEntry; index < lastEntry; index++) {
-  const object = objects[index];
+// Index using Fuse.js
+const fuseOptions = {
+	// isCaseSensitive: false,
+	// includeScore: false,
+	// ignoreDiacritics: false,
+	// shouldSort: true,
+	// includeMatches: false,
+	// findAllMatches: true,
+	// minMatchCharLength: 1,
+	// location: 0,
+	// threshold: 0.6,
+	// distance: 100,
+	// useExtendedSearch: false,
+	// ignoreLocation: false,
+	// ignoreFieldNorm: false,
+	// fieldNormWeight: 1,
+	keys: [
+		"name",
+		"author",
+    "authorRaw",
+    "url"
+	]
+};
 
-  var aRef = document.createElement('a');
-  aRef.href = object[2];
+const idx = new Fuse(objects, fuseOptions)
+
+// Searchbar
+let searchInput = urlParams.get('search') || "";
+const form = document.getElementById("search-form");
+if (form)
+{
+  let formField = form.querySelector('input');
+  formField.value = searchInput;
+  function handleForm(event) {
+    event.preventDefault();
+    searchObjects(formField.value);
+  }
+  form.addEventListener('submit', handleForm);
+}
+
+searchObjects(searchInput);
+
+function createPostBox(post_information) {
+  let aRef = document.createElement('a');
+  aRef.href = post_information.url;
   aRef.className = "boxContainer postBox";
 
   objectsGrid.appendChild(aRef);
 
-  var img = document.createElement('img');
-  img.src = object[1];
+  let img = document.createElement('img');
+  img.src = post_information.image;
   aRef.appendChild(img);
 
-  var title = document.createElement('h2');
-  title.innerHTML = object[0];
+  let title = document.createElement('h2');
+  title.innerHTML = post_information.name;
   title.dir = "auto"
   aRef.appendChild(title);
 
-  var author = document.createElement('p');
-  author.innerHTML = object[3];
+  let author = document.createElement('p');
+  author.innerHTML = post_information.author;
   author.dir = "auto"
   aRef.appendChild(author);
 
-  const date = new Date(object[4]);
-  console.log(date.toDateString());
+  const date = new Date(post_information.date);
 
-  var dateText = document.createElement('p');
+  let dateText = document.createElement('p');
   dateText.className = "followSiblingP"
   dateText.innerHTML = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
   aRef.appendChild(dateText);
 }
 
-// Add navigation
-if (pageCountMax > 1) {
-  var div = document.createElement('div');
-  div.className = "pagination";
-  content.appendChild(div);
+function searchObjects(searchQuery) {
+  objectsGrid.textContent = '';
 
-  let pageA;
+  let results = idx.search(searchQuery);
+  console.log("Search Results", results);
 
-  // Previous page button
-  if (page > 1) {
-    pageA = document.createElement('a');
-    pageA.href = window.location.href.split('?')[0] + `?page=${page-1}`;
+  const url = new URL(window.location);
+
+  if (url.pathname.slice(-1) == "/") {
+    url.pathname = url.pathname.substring(0, url.pathname.length - 1);
+  }
+
+  if (searchQuery.length > 0) {
+    url.searchParams.set("search", searchQuery);
   } else {
-    pageA = document.createElement('span');
+    results = objects;
+    url.searchParams.delete("search");
   }
-  pageA.className = "paginationDir";
-  div.appendChild(pageA);
+  history.pushState(null, '', url);
 
-  pageA.innerHTML = "{{ site.page_text_prev }}"
+  let pageCountMax = Math.max(Math.ceil(results.length / entriesPerPage), 1);
+  let currentPage = Math.max(url.searchParams.get("page") || 1, 1);
+  if (currentPage > pageCountMax) {
+    moveToPage(pageCountMax);
+    return;
+  }
 
-  // Page number buttons
-  var firstPageIndex = page - entriesPerDir;
-  var lastPageIndex = page + entriesPerDir;
+  let startIndex = entriesPerPage * (currentPage - 1);
+  let endIndex = entriesPerPage * currentPage;
 
-  if (firstPageIndex < 1)
+  // Add object boxes
+  for (let i = startIndex; i < Math.min(endIndex, results.length); i++)
   {
-    firstPageIndex = 1;
-    lastPageIndex = Math.min((entriesPerDir * 2) + 1, pageCountMax);
-  }
-  else if (lastPageIndex > pageCountMax )
-  {
-    firstPageIndex = Math.max(pageCountMax - (entriesPerDir * 2), 1);
-    lastPageIndex = pageCountMax;
+    createPostBox(objects[results[i].refIndex]);
   }
 
-  if (firstPageIndex > 1) {
-    pageA = document.createElement("a");
-    pageA.className = "paginationButton";
-    pageA.href = window.location.href.split('?')[0] + `?page=${1}`;
-    div.appendChild(pageA);
-    pageA.innerHTML = `${1}`;
-
-    pageA = document.createElement("span");
-    div.appendChild(pageA);
-    pageA.innerHTML = "...";
+  // Add navigation
+  let pagesHolder = document.getElementById("paginationHolder");
+  if (!pagesHolder) {
+    pagesHolder = document.createElement('div');
+    pagesHolder.className = "pagination";
+    pagesHolder.id = "paginationHolder";
+    content.appendChild(pagesHolder);
   }
+  pagesHolder.textContent = '';
 
-  for (let index = firstPageIndex; index <= lastPageIndex; index++) {
-    if (index == page) {
+  if (pageCountMax > 1) {
+    let pageA;
+
+    // Previous page button
+    if (page > 1) {
+      pageA = document.createElement('a');
+      pageA.href = window.location.href.split('?')[0] + `?page=${page-1}`;
+    } else {
+      pageA = document.createElement('span');
+    }
+    pageA.className = "paginationDir";
+    pagesHolder.appendChild(pageA);
+
+    pageA.innerHTML = "{{ site.page_text_prev }}"
+
+    // Page number buttons
+    var firstPageIndex = page - entriesPerDir;
+    var lastPageIndex = page + entriesPerDir;
+
+    if (firstPageIndex < 1)
+    {
+      firstPageIndex = 1;
+      lastPageIndex = Math.min((entriesPerDir * 2) + 1, pageCountMax);
+    }
+    else if (lastPageIndex > pageCountMax )
+    {
+      firstPageIndex = Math.max(pageCountMax - (entriesPerDir * 2), 1);
+      lastPageIndex = pageCountMax;
+    }
+
+    if (firstPageIndex > 1) {
+      createPageButton(pagesHolder, 1);
       pageA = document.createElement("span");
-      pageA.className = "activePage";
+      pagesHolder.appendChild(pageA);
+      pageA.innerHTML = "...";
     }
-    else {
-      pageA = document.createElement("a");
-      pageA.className = "paginationButton";
-      pageA.href = window.location.href.split('?')[0] + `?page=${index}`;
+
+    for (let index = firstPageIndex; index <= lastPageIndex; index++) {
+      if (index == page) {
+        pageA = document.createElement("span");
+        pageA.className = "activePage";
+        pagesHolder.appendChild(pageA);
+        pageA.innerHTML = `${index}`;
+      }
+      else {
+        createPageButton(pagesHolder, index);
+      }
     }
-    div.appendChild(pageA);
-    pageA.innerHTML = `${index}`;
+
+    if (lastPageIndex < pageCountMax) {
+      pageA = document.createElement("span");
+      pagesHolder.appendChild(pageA);
+      pageA.innerHTML = "...";
+
+      createPageButton(pagesHolder, pageCountMax);
+    }
+
+    // Next page button
+    if (page < pageCountMax) {
+      pageA = document.createElement('a');
+      pageA.onclick = (event) => {
+        moveToPage(page+1)
+      }
+      // pageA.href = window.location.href.split('?')[0] + `?page=${page+1}`;
+    } else {
+      pageA = document.createElement('span');
+    }
+    pageA.className = "paginationDir";
+    pagesHolder.appendChild(pageA);
+
+    pageA.innerHTML = "{{ site.page_text_next }}"
+  }
+}
+
+function createPageButton(pagesHolder, pageIndex) {
+  pageA = document.createElement("a");
+  pageA.className = "paginationButton";
+  pageA.onclick = (event) => {
+    event.preventDefault();
+    moveToPage(pageIndex);
+  }
+  pageA.href = window.location.href.split('?')[0] + `?page=${pageIndex}`;
+  pagesHolder.appendChild(pageA);
+  pageA.innerHTML = `${pageIndex}`;
+}
+
+
+function moveToPage(pageIndex) {
+  const url = new URL(window.location);
+  if (url.pathname.slice(-1) == "/") {
+    url.pathname = url.pathname.substring(0, url.pathname.length - 1);
   }
 
-  if (lastPageIndex < pageCountMax) {
-    pageA = document.createElement("span");
-    div.appendChild(pageA);
-    pageA.innerHTML = "...";
-
-    pageA = document.createElement("a");
-    pageA.className = "paginationButton";
-    pageA.href = window.location.href.split('?')[0] + `?page=${pageCountMax}`;
-    div.appendChild(pageA);
-    pageA.innerHTML = `${pageCountMax}`;
-  }
-
-  // Next page button
-  if (page < pageCountMax) {
-    pageA = document.createElement('a');
-    pageA.href = window.location.href.split('?')[0] + `?page=${page+1}`;
-  } else {
-    pageA = document.createElement('span');
-  }
-  pageA.className = "paginationDir";
-  div.appendChild(pageA);
-
-  pageA.innerHTML = "{{ site.page_text_next }}"
+  url.searchParams.set("page", pageIndex);
+  window.location = url.toString();
 }
