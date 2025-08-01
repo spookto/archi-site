@@ -3,55 +3,70 @@ const entriesPerDir = {{ site.page_max_buttons_per_dir }};
 console.log(entriesPerPage, " , ", entriesPerDir);
 
 const content = document.getElementById("contentHolder");
-const eventsCount = {{ site.events.size }};
+const objectsCount = {{ include.objects.size }};
 
-const events = [];
-{% assign sortedEvents = site.events | sort: 'date' | reverse %}
-{% for event in sortedEvents %}
-events.push([
-  `{{ event.title }}`,
-  `{{ event.cover }}`,
-  `{{ event.url }}`,
-  `{{ event.author }}`,
-  `{{ event.date }}`
-]);
+const objects = [];
+
+{% assign sortedObjects = include.objects | sort: 'date' | reverse %}
+
+{% for object in sortedObjects %}
+  {% assign target_link = object[include.target] %}
+  {% assign target_link_start = target_link | slice: 0 %}
+
+  {% if target_link_start == "/" %}
+    {% assign target_link = site.baseurl | append: object[include.target] %}
+  {% endif %}
+
+  {% assign author = object.author %}
+  {% if include.posts == true %}
+    {% assign author = site.authors | where: "name", author | first %}
+    {% assign author = author.display_name %}
+  {% endif %}
+
+  objects.push([
+    `{{ object.title }}`,
+    `{{ object.cover }}`,
+    `{{ target_link }}`,
+    `{{ author }}`,
+    `{{ object.date }}`
+  ]);
 {% endfor %}
 
-const pageCountMax = Math.ceil(eventsCount / entriesPerPage);
+const pageCountMax = Math.ceil(objectsCount / entriesPerPage);
 
 const urlParams = new URLSearchParams(window.location.search);
 const page = Math.min(Math.max(Number(urlParams.get('page')), 1) || 1, pageCountMax);
 
 const firstEntry = (entriesPerPage * (page - 1));
-const lastEntry = Math.min(entriesPerPage * page, eventsCount);
+const lastEntry = Math.min(entriesPerPage * page, objectsCount);
 
-const eventsGrid = document.getElementById('articlesContainer');
+const objectsGrid = document.getElementById('articlesContainer');
 
-// Add event boxes
+// Add object boxes
 for (let index = firstEntry; index < lastEntry; index++) {
-  const event = events[index];
+  const object = objects[index];
 
   var aRef = document.createElement('a');
-  aRef.href = `{{ site.baseurl }}` + event[2];
+  aRef.href = object[2];
   aRef.className = "boxContainer postBox";
 
-  eventsGrid.appendChild(aRef);
+  objectsGrid.appendChild(aRef);
 
   var img = document.createElement('img');
-  img.src = event[1];
+  img.src = object[1];
   aRef.appendChild(img);
 
   var title = document.createElement('h2');
-  title.innerHTML = event[0];
+  title.innerHTML = object[0];
   title.dir = "auto"
   aRef.appendChild(title);
 
   var author = document.createElement('p');
-  author.innerHTML = event[3];
+  author.innerHTML = object[3];
   author.dir = "auto"
   aRef.appendChild(author);
 
-  const date = new Date(event[4]);
+  const date = new Date(object[4]);
   console.log(date.toDateString());
 
   var dateText = document.createElement('p');

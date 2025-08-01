@@ -2,30 +2,10 @@
 title: Mentions
 short_name: mentions
 ---
-{% comment %} <script>
-    document.addEventListener("DOMContentLoaded", function(event) {
-        var scrollpos = sessionStorage.getItem('scrollpos');
-        if (scrollpos) {
-          window.scrollTo(0, scrollpos);
-          sessionStorage.removeItem('scrollpos');
-        }
-    });
-
-    window.onbeforeunload = function(e) {
-        sessionStorage.setItem('scrollpos', window.scrollY);
-    };
-</script> {% endcomment %}
-
 <!-- HACK: This fixes so many problems without duplicating code! -->
-<div id="articlesContainer">
-  {% comment %}
-    {% for mention in site.mentions %}
-    {% include post-box.html post=mention is_mention=true %}
-    {% endfor %}
-  {% endcomment %}
-</div>
+<div id="articlesContainer"></div>
 
 <!-- GITHUB PAGES doesn't support paginate-v2, we have to create our own for other collections ! -->
 <script type="text/javascript">
-  {% include mentionPaginator.js %}
+  {% include paginator.js objects=site.mentions target='link' %}
 </script>
