@@ -38,6 +38,16 @@ a {
   text-decoration: inherit; /* no underline */
 }
 
+.desktopOnly {
+  visibility: visible;
+  display: block;
+}
+
+.mobileOnly {
+  visibility: hidden;
+  display: none;
+}
+
 .logo {
   height: min(88px, 16vw);
   margin: min(0.5em, 1vw);
@@ -272,7 +282,6 @@ nav a:not(:last-child) {
 }
 
 .mainImage {
-  display: block;
   width: 100%;
   background-color: white;
   border-bottom: solid $main-color 16px;
@@ -540,7 +549,6 @@ span.paginationDir {
 }
 // End Page Specifics
 
-
 /* Large screen */
 @media (min-width: 992px), (min-aspect-ratio: 1/1) {
   #headerMenuButtonLabel {
@@ -575,6 +583,17 @@ span.paginationDir {
   }
   .postInfo {
     width: 100%;
+  }
+  .postImage {
+    aspect-ratio: 3/2;
+  }
+  .desktopOnly {
+    display: none;
+    visibility: hidden;
+  }
+  .mobileOnly {
+    visibility: visible;
+    display: block;
   }
   .postImageText {
     position: static;

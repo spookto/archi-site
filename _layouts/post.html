@@ -4,7 +4,8 @@ layout: base
 <div class="mainImageDiv">
   {% assign author = site.authors | where: "name", page.author | first %}
 
-  <img class="mainImage postImage" src="{{ page.pageheader }}">
+  <img class="mainImage postImage desktopOnly" src="{{ page.pageheader }}">
+  <img class="mainImage postImage mobileOnly" src="{{ page.cover }}">
   <div class="mainImageText postImageText" dir="auto">
     <p class="postInfo bgMainColor">
       <span class="author">{{ author.display_name }}</span>
