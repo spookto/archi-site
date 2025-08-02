@@ -143,3 +143,16 @@ collections:
         fields:
           - { label: "Name", name: "name", widget: "string" }
           - { label: "Image", name: "image", widget: "image" }
+
+      - label: "Messages"
+        name: "messages"
+        file: "_data/messages.yml"
+        fields:
+          - label: "Message Items"
+            name: "messages"
+            widget: "list"
+            allow_add: false
+            summary: '{{fields.id}}'
+            fields:
+              - { label: Identifier, name: id, widget: "hidden" }
+              - { label: Message Text, name: text, widget: string }

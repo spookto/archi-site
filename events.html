@@ -2,11 +2,16 @@
 title: Events
 short_name: events
 ---
-{% include searchbar.html %}
-<!-- HACK: This fixes so many problems without duplicating code! -->
-<div id="articlesContainer"></div>
+{% if site.events.size > 0 %}
+  {% include searchbar.html %}
+  <!-- HACK: This fixes so many problems without duplicating code! -->
+  <div id="articlesContainer"></div>
 
-<!-- GITHUB PAGES doesn't support paginate-v2, we have to create our own for other collections ! -->
-<script type="text/javascript">
-  {% include paginator.js objects=site.events target='url' %}
-</script>
+  <!-- GITHUB PAGES doesn't support paginate-v2, we have to create our own for other collections ! -->
+  <script type="text/javascript">
+      {% include paginator.js objects=site.events target='url' %}
+  </script>
+{% else %}
+  {% assign message_data = site.data.messages.messages | where: 'id', 'no_events' | first %}
+  <h1 style="text-align: center; font-size: min(3em, 6vw);">{{ message_data.text }}</h1>
+{% endif %}
