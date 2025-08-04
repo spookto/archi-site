@@ -38,16 +38,6 @@ a {
   text-decoration: inherit; /* no underline */
 }
 
-.desktopOnly {
-  visibility: visible;
-  display: block;
-}
-
-.mobileOnly {
-  visibility: hidden;
-  display: none;
-}
-
 .logo {
   height: min(88px, 16vw);
   margin: min(0.5em, 1vw);
@@ -282,6 +272,8 @@ nav a:not(:last-child) {
 }
 
 .mainImage {
+  background: none;
+  display: block;
   width: 100%;
   background-color: white;
   border-bottom: solid $main-color 16px;
@@ -367,8 +359,6 @@ p:dir(rtl) ~ .followSiblingP {
 }
 
 .postImage {
-  background: none;
-  width: 100%;
   //max-height: 400px;
   aspect-ratio: 3.2;
   object-fit: cover;
@@ -556,6 +546,14 @@ span.paginationDir {
   }
   .contentDiv {
     max-width: min(max(60vw, 1152px), 90vw);
+  }
+  .desktopOnly {
+    display: block;
+    visibility: visible;
+  }
+  .mobileOnly {
+    display: none;
+    visibility: hidden;
   }
 }
 
