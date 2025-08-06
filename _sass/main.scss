@@ -487,8 +487,8 @@ ul:has(> li p [dir="rtl"]), ol:has(> li p [dir="rtl"]) {
 #partnerLinksContainer a {
   flex-grow: 1;
   aspect-ratio: 1.8;
-  min-width: 300px;
-  max-width: 32%;
+  width: 100%;
+  max-width: 380px;
   padding: min(20px, 1vw);
 }
 
