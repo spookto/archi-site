@@ -3,7 +3,8 @@ title: Events
 short_name: events
 ---
 {% if site.events.size > 0 %}
-  {% include searchbar.html %}
+  {% include searchbar.html padding=false %}
+  <h1 class="headerRed">Upcoming Events</h1>
   <!-- HACK: This fixes so many problems without duplicating code! -->
   <div id="articlesContainer"></div>
 

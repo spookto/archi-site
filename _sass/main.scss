@@ -162,7 +162,10 @@ nav a:not(:last-child) {
   font-weight: bolder;
   text-align: center;
   align-items: stretch;
-  font-size: min(4.5em, 8vw);
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  font-size: min(3.5rem, 5vh);
   background-color: $main-color;
   color: $text-white;
   position: absolute;
@@ -170,6 +173,12 @@ nav a:not(:last-child) {
   left: 0;
   right: 0;
   z-index: 100;
+  > a {
+    width: 80%;
+  }
+  > a:not(:last-child) {
+    border-bottom: solid 3px $text-white;
+  }
 }
 
 #headerMenuAnchor {
@@ -225,7 +234,7 @@ nav a:not(:last-child) {
   max-height: 100%;
   max-width: 100%;
   overflow-wrap: break-word;
-  font-size: min(30px, 3vw);
+  font-size: min(1.7em, 3vw);
 }
 
 
@@ -236,7 +245,7 @@ nav a:not(:last-child) {
 }
 
 .postBox h2 {
-  font-size: max(min(1.3em, 2.2vw), 22px);
+  font-size: max(min(1.8rem, 2.2vw), 25px);
   flex-grow: 1;
   line-height: 1.5em;
   max-height: 3.2em;
@@ -248,7 +257,7 @@ nav a:not(:last-child) {
 }
 
 .postBox p {
-  font-size: max(1em, 18px);
+  font-size: 1.6rem;
   line-height: 1em;
 }
 
@@ -399,7 +408,6 @@ p:dir(rtl) ~ .followSiblingP {
   padding-bottom: 5vh;
   font-size: 1.7em;
   word-spacing: 0.2em;
-  line-height: 2.0;
 }
 
 .postContainer a {
@@ -449,7 +457,7 @@ ul:has(> li p [dir="rtl"]), ol:has(> li p [dir="rtl"]) {
   direction: rtl;
 }
 
-#partnersPage h1 {
+.headerRed, #partnersPage h1 {
   color: $main-color;
   font-size: min(60px, 7vw);
 }
@@ -540,7 +548,7 @@ span.paginationDir {
 // End Page Specifics
 
 /* Large screen */
-@media (min-width: 992px), (min-aspect-ratio: 1/1) {
+@media (min-width: 992px), (min-aspect-ratio: 1.44) {
   #headerMenuButtonLabel {
     display: none;
   }
@@ -557,7 +565,7 @@ span.paginationDir {
   }
 }
 
-@media (max-aspect-ratio: 1/1) {
+@media (max-aspect-ratio: 1.44) {
   header {
     padding-top: 0;
     margin-top: 0;
