@@ -23,23 +23,25 @@ short_name: members
     <div>
       <h1 class="textMain memberGroupText">{{ members_group.name }}</h1>
 
-      <h2 class="memberDateText">
-        <!-- Store start year ! -->
-        {% capture start_year %} {{ members_group.date_start | date: "%Y" }} {% endcapture %}
-        <!-- Write start month ! -->
-        {{ members_group.date_start | date: "%B " }}
-        <!-- Write start month ! -->
-        {% if members_group.date_end.size == 0 %}
-          {{ start_year }}
-        {% else %}
-          {% capture end_year %} {{ members_group.date_end | date: "%Y" }} {% endcapture %}
-          {% if start_year == end_year %}
-            - {{ members_group.date_end | date: "%B %Y" }}
+      {% if members_group.hide_date != false %}
+        <h2 class="memberDateText">
+          <!-- Store start year ! -->
+          {% capture start_year %} {{ members_group.date_start | date: "%Y" }} {% endcapture %}
+          <!-- Write start month ! -->
+          {{ members_group.date_start | date: "%B " }}
+          <!-- Write start month ! -->
+          {% if members_group.date_end.size == 0 %}
+            {{ start_year }}
           {% else %}
-            {{ start_year }} - {{ members_group.date_end | date: "%B %Y" }}
+            {% capture end_year %} {{ members_group.date_end | date: "%Y" }} {% endcapture %}
+            {% if start_year == end_year %}
+              - {{ members_group.date_end | date: "%B %Y" }}
+            {% else %}
+              {{ start_year }} - {{ members_group.date_end | date: "%B %Y" }}
+            {% endif %}
           {% endif %}
-        {% endif %}
-      </h2>
+        </h2>
+      {% endif %}
 
       <ul class="membersGrid">
         <!-- Members ! -->

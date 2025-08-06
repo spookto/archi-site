@@ -14,5 +14,5 @@ short_name: events
   </script>
 {% else %}
   {% assign message_data = site.data.messages.messages | where: 'id', 'no_events' | first %}
-  <h1 style="text-align: center; font-size: min(3em, 6vw);">{{ message_data.text }}</h1>
+  <h1 class="headerRed" style="text-align: center; font-size: min(60px, 7vw);">{{ message_data.text }}</h1>
 {% endif %}
