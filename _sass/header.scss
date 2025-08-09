@@ -1,0 +1,104 @@
+header {
+  background-color: $main-color;
+  color: $text-white;
+  padding: 4px 10px;
+}
+
+#headerTitle {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  line-height: min(1.8rem, 4.0vw);
+
+  h1 {
+    max-height: min-content;
+    font-size: $font-size-large;
+    white-space: nowrap;
+  }
+  h4 {
+    max-height: min-content;
+    font-size: $font-size-small;
+  }
+}
+
+nav {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  font-weight: bolder;
+  text-align: center;
+  font-size: $font-size-normal;
+
+  a {
+    padding: 0 10px;
+  }
+  a:not(:last-child) {
+    border-right: solid 4px $text-white;
+  }
+}
+
+#headerTextLinks {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  margin-left: 2rem;
+  white-space: nowrap;
+  font-size: min(1em, 1.5vw); // Inherit size from 'nav', but be more aggressive with shrinking
+
+  a {
+    transition:
+      text-shadow 0.1s;
+  }
+  a:hover {
+    text-shadow: 3px 3px 0px $background-dark;
+  }
+}
+
+#headerMenuButton {
+  background: none no-repeat left center;
+  background-image: none;
+  display: none;
+}
+
+#headerMenuButtonLabel {
+  font-size: 50px;
+  display: block;
+  cursor: pointer;
+}
+
+#headerMenuContent {
+  display: flex;
+  flex-direction: column;
+  font-weight: bolder;
+  text-align: center;
+  align-items: stretch;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  font-size: min(3.5rem, 5vh); // Unique due to this only being visible on mobile
+  background-color: $main-color;
+  color: $text-white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  > a {
+    width: 80%;
+  }
+  > a:not(:last-child) {
+    border-bottom: solid 3px $text-white;
+  }
+}
+
+#headerMenuAnchor {
+  position: relative;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+#headerMenuButton:checked ~ #headerMenuAnchor {
+  overflow: visible;
+  min-height: 100%;
+}

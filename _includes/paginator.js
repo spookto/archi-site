@@ -93,7 +93,8 @@ function createPostBox(post_information) {
   img.src = post_information.image;
   aRef.appendChild(img);
 
-  let title = document.createElement('h2');
+  let title = document.createElement('p');
+  title.className = "title";
   title.innerHTML = post_information.name;
   title.dir = "auto"
   aRef.appendChild(title);

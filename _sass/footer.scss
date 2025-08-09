@@ -7,6 +7,7 @@ footer {
   padding: 0 min(28px, 3vw);
   padding-top: min(16px, 0.95vw);
   padding-bottom: 30px;
+  font-size: $font-size-normal;
 }
 
 #footerTitle {
@@ -28,19 +29,19 @@ footer {
   align-items: center;
   flex-direction: column;
   padding-bottom: 16px;
-}
 
-#footerTitleTexts h1 {
-  word-spacing: -0.1em;
-  font-size: min(90px, 10vw);
-  line-height: 100%;
-  white-space: nowrap;
-}
+  h1 {
+    word-spacing: -0.1em;
+    font-size: min(80px, 10vw);
+    line-height: 100%;
+    white-space: nowrap;
+  }
 
-#footerTitleTexts h4 {
-  font-size: 14px;
-  line-height: 100%;
-  font-weight: normal;
+  h4 {
+    font-size: 12px;
+    line-height: 100%;
+    font-weight: normal;
+  }
 }
 
 #footerCopyright {
@@ -48,12 +49,12 @@ footer {
   line-height: 1.5;
 }
 
-.footerText {
+.footerText { // Used for email and copyright
   font-weight: 500;
-  font-size: min(1.4em, 3.5vw);
+  font-size: 0.8em; // 80% of font scale
 }
 
-#footerLinks {
+#footerLinks { // Social logos
   display: flex;
   flex-direction: row;
   justify-content: right;
@@ -64,10 +65,20 @@ footer {
   height: 100%;
   flex-wrap: nowrap;
   text-align: center;
-}
 
-#footerLinks *{
-  min-width: 1em;
+  * {
+    min-width: 1em;
+  }
+
+  a {
+    transition:
+      scale 0.2s,
+      text-shadow 0.1s;
+  }
+  a:hover {
+    scale: 1.1;
+    text-shadow: 4px 4px 0px $background-dark;
+  }
 }
 
 /* Medium devices (1000px and below) */

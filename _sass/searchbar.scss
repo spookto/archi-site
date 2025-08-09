@@ -9,7 +9,7 @@
 
 #search-input-field {
   flex: 1;
-  font-size: min(1.8em, 5vw);
+  font-size: $font-size-normal;
   border: solid $inactive-color 2px;
   padding: 0 4px;
 }
@@ -23,7 +23,7 @@
   height: 100%;
   aspect-ratio: 1;
   border: none;
-  font-size: min(1.5em, 5vw);
+  font-size: $font-size-normal;
   background: $main-color;
   color: $text-white;
 }

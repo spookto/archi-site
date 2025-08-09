@@ -4,7 +4,14 @@ $text-black: #000;
 $text-white: #fff;
 $main-color: #a52b2d;
 $inactive-color: #939393;
-$navigation-font-size: 25px;
+
+$font-size-small: min(1rem, 3vw);
+$font-size-normal: min(1.6rem, 4vw);
+$font-size-large: min(2.1rem, 5vw);
+
+$font-size-header-normal: min(3.2rem, 7vw);
+$font-size-header-large: min(5rem, 10vw);
+
 
 * {
   margin: 0;
@@ -20,7 +27,7 @@ body {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  font-size: min(1em, 3vw);
+  font-size: $font-size-normal;
 }
 
 #main {
@@ -30,7 +37,7 @@ body {
 }
 
 h1 {
-  font-size: min(27px, 4.5vw);
+  font-size: $font-size-large;
 }
 
 a {
@@ -39,8 +46,8 @@ a {
 }
 
 .logo {
-  height: min(88px, 16vw);
-  margin: min(0.5em, 1vw);
+  height: min(80px, 16vw);
+  margin: min(0.5rem, 1vw);
 }
 
 .hflex {
@@ -98,101 +105,14 @@ table, th, td {
   border: 1px solid;
 }
 
-// Header Begin
-header {
-  background-color: $main-color;
-  color: $text-white;
-  padding: 4px 10px;
-}
-
-#headerTitle {
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  line-height: min(1.8em, 4.0vw);
-}
-
-#headerTitle h1 {
-  white-space: nowrap;
-}
-
-nav {
-  display: flex;
-  justify-content: right;
-  align-items: center;
-  font-weight: bolder;
-  text-align: center;
-  font-size: $navigation-font-size;
-}
-
-nav a {
-  padding: 0 10px;
-}
-
-nav a:not(:last-child) {
-  border-right: solid 4px $text-white;
-}
-
-#headerTextLinks {
-  display: flex;
-  flex-direction: row;
-  gap: 0;
-  font-size: min(1em, 1.8vw);
-  margin-left: 2em;
-  white-space: nowrap;
-}
-
-#headerMenuButton {
-  background: none no-repeat left center;
-  background-image: none;
-  display: none;
-}
-
-#headerMenuButtonLabel {
-  font-size: 56px;
-  display: block;
-  padding: min(10px, 0.2vw) 50px;
-  padding-right: 0;
+.genericButton {
   cursor: pointer;
-}
 
-#headerMenuContent {
-  display: flex;
-  flex-direction: column;
-  font-weight: bolder;
-  text-align: center;
-  align-items: stretch;
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
-  font-size: min(3.5rem, 5vh);
-  background-color: $main-color;
-  color: $text-white;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  > a {
-    width: 80%;
-  }
-  > a:not(:last-child) {
-    border-bottom: solid 3px $text-white;
+  &:hover {
+    color: $main-color;
   }
 }
 
-#headerMenuAnchor {
-  position: relative;
-  left: 0;
-  right: 0;
-  overflow: hidden;
-}
-
-#headerMenuButton:checked ~ #headerMenuAnchor {
-  overflow: visible;
-  min-height: 100%;
-}
-// Header End
 
 // Backgrounds Begin
 .bgPaper {
@@ -234,31 +154,38 @@ nav a:not(:last-child) {
   max-height: 100%;
   max-width: 100%;
   overflow-wrap: break-word;
-  font-size: min(1.7em, 3vw);
-}
+  font-size: $font-size-normal;
+  transition:
+    box-shadow 0.1s;
+  &:hover {
+    border-color: $main-color;
+    box-shadow: 14px 14px $main-color;
+  }
 
+  img {
+    max-width: 100%;
+    aspect-ratio: 1.5;
+    object-fit: cover;
+  }
 
-.postBox img {
-  max-width: 100%;
-  aspect-ratio: 1.5;
-  object-fit: cover;
-}
+  .title {
+    font-weight: bold;
+    font-size: max(1.1em, 25px);
+    flex-grow: 1;
+    line-height: 1.5em;
+    min-height: 1.6em;
+    max-height: 3.2em;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+            line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
 
-.postBox h2 {
-  font-size: max(min(1.8rem, 2.2vw), 25px);
-  flex-grow: 1;
-  line-height: 1.5em;
-  max-height: 3.2em;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 2; /* number of lines to show */
-          line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-
-.postBox p {
-  font-size: max(min(1.6rem, 2.0vw), 22px);
-  line-height: 1em;
+  p {
+    font-size: $font-size-normal;
+    line-height: 1em;
+  }
 }
 
 .contentBackground {
@@ -332,27 +259,6 @@ p:dir(rtl) ~ .followSiblingP {
 }
 
 // Page Specifics
-.mentionBox {
-  display: flex;
-  flex-direction: column;
-  border: solid $background-dark 4px;
-  box-shadow: 10px 10px $main-color;
-  margin-bottom: 18px;
-  padding: 16px;
-  text-decoration: none;
-}
-
-.mentionBox h1 {
-  font-size: 1.5em;
-}
-
-.mentionBox img {
-  aspect-ratio: 1.5;
-  background-color: #ffc232;
-  object-fit: contain;
-  flex-grow: 1;
-}
-
 #articlesContainer {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -411,7 +317,6 @@ p:dir(rtl) ~ .followSiblingP {
   border-right: 2px solid #ddd;
   padding: 1em 2em;
   padding-bottom: 5vh;
-  font-size: 1.7em;
   word-spacing: 0.2em;
 }
 
@@ -464,13 +369,12 @@ ul:has(> li p [dir="rtl"]), ol:has(> li p [dir="rtl"]) {
 
 .headerRed, #partnersPage h1 {
   color: $main-color;
-  font-size: min(60px, 7vw);
+  font-size: $font-size-header-normal;
 }
 
 #partnersPage p {
   text-align: justify;
   font-weight: 700;
-  font-size: min(24px, 4vw);
 }
 
 #partnersPage .content-ar {
@@ -525,6 +429,7 @@ ul:has(> li p [dir="rtl"]), ol:has(> li p [dir="rtl"]) {
 .paginationButton {
   display: inline-block;
   background-color: $inactive-color;
+  @extend .genericButton;
 }
 
 .activePage {
@@ -532,11 +437,23 @@ ul:has(> li p [dir="rtl"]), ol:has(> li p [dir="rtl"]) {
 }
 
 .paginationDir {
+  cursor: pointer;
   font-size: 1.5em;
+  transition:
+    text-shadow 0.1s;
+
+  &:hover {
+    text-shadow: 0.1ch 0.1ch 0px $main-color;
+  }
 }
 
 span.paginationDir {
-  color: $inactive-color
+  cursor: default;
+  color: $inactive-color;
+  text-shadow: none;
+  &:hover {
+    text-shadow: none;
+  }
 }
 
 #move {
@@ -551,76 +468,3 @@ span.paginationDir {
   }
 }
 // End Page Specifics
-
-/* Large screen */
-@media (min-width: 992px), (min-aspect-ratio: 1.44) {
-  #headerMenuButtonLabel {
-    display: none;
-  }
-  .contentDiv {
-    max-width: min(max(60vw, 1152px), 95vw);
-  }
-  .desktopOnly {
-    display: block;
-    visibility: visible;
-  }
-  .mobileOnly {
-    display: none;
-    visibility: hidden;
-  }
-}
-
-@media (max-aspect-ratio: 1.44) {
-  header {
-    padding-top: 0;
-    margin-top: 0;
-  }
-  .logo {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-  #headerTextLinks {
-    display: none;
-  }
-  #headerMenuButtonLabel {
-    display: block;
-  }
-  .contentDiv {
-    padding: 32px;
-    min-width: 100%;
-  }
-  .postContainer {
-    font-size: min(2em, 5.2vw);
-  }
-  .postInfo {
-    width: 100%;
-  }
-  .postImage {
-    aspect-ratio: 3/2;
-  }
-  .desktopOnly {
-    display: none;
-    visibility: hidden;
-  }
-  .mobileOnly {
-    visibility: visible;
-    display: block;
-  }
-  .postImageText {
-    position: static;
-    > * {
-      min-width: 100%;
-      width: 100%;
-    }
-  }
-  .pagination {
-    font-size: 1.4em;
-  }
-}
-
-/* Small devices (768px and below) */
-@media only screen and (max-width: 768px) {
-  #articlesContainer {
-    grid-template-columns: 1fr;
-  }
-}

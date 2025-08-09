@@ -11,7 +11,7 @@
 }
 
 .btn {
-  font-size: min(22px, 4vw);
+  font-size: $font-size-normal;
   font-weight: 700;
   display: inline-block;
   background-color: $inactive-color;

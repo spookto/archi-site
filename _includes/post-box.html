@@ -6,7 +6,7 @@
 {% endif %}
  " class="boxContainer postBox">
   <img src="{{ include.post.cover }}">
-  <h2 dir="auto">{{ include.post.title }}</h2>
+  <p class="title" dir="auto">{{ include.post.title }}</p>
   {% if include.is_mention %}
     <p dir="auto">{{ include.post.author }}</p>
   {% else %}
