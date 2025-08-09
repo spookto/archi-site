@@ -5,7 +5,7 @@ layout: base
 {% assign image_file = site.static_files | where: "path", page_image | first %}
 {% if image_file %}
   <div class="mainImageDiv">
-    <img class="mainImage" src={{ image_file.path | relative_url }}>
+    <div class="mainImage" style="background-image: url({{image_file.path | relative_url}});"></div>
     <h1 class="mainImageText">{{ page.title }}</h1>
   </div>
 {% endif %}

@@ -226,8 +226,14 @@ table, th, td {
   background: none;
   display: block;
   width: 100%;
-  background-color: white;
+  min-height: min(40vw, 80vh);
   border-bottom: solid $main-color 16px;
+
+  background-origin: border-box;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .mainImageDiv {

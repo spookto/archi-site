@@ -64,6 +64,17 @@
   }
 }
 
+@media only screen and (max-aspect-ratio: 0.9) {
+  .mainImage {
+    aspect-ratio: 2.2;
+    background-origin: border-box;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: scroll;
+  }
+}
+
 /* Small devices (768px and below) */
 @media only screen and (max-width: 768px) {
   #articlesContainer {
