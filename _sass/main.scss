@@ -76,11 +76,16 @@ a {
   &[href]
   {
     transition:
+      translate 0.1s,
       box-shadow 0.1s;
 
     &:hover {
+      translate: 0px -2px;
       border-color: $main-color;
       box-shadow: 14px 14px $main-color;
+      & > h1 {
+        color: $main-color;
+      }
     }
   }
 }
