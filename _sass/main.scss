@@ -72,6 +72,17 @@ a {
   margin-bottom: 18px;
   padding: 16px;
   background-color: #fff;
+
+  &[href]
+  {
+    transition:
+      box-shadow 0.1s;
+
+    &:hover {
+      border-color: $main-color;
+      box-shadow: 14px 14px $main-color;
+    }
+  }
 }
 
 .noSelect {
@@ -155,12 +166,6 @@ table, th, td {
   max-width: 100%;
   overflow-wrap: break-word;
   font-size: $font-size-normal;
-  transition:
-    box-shadow 0.1s;
-  &:hover {
-    border-color: $main-color;
-    box-shadow: 14px 14px $main-color;
-  }
 
   img {
     max-width: 100%;
