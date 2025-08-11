@@ -5,7 +5,7 @@ layout: base
   {% assign author = site.authors | where: "name", page.author | first %}
 
   <div class="mainImage postImage" style="background-image: url({{ page.pageheader }});"></div>
-  <div class="mainImageText postImageText" dir="auto">
+  <div class="mainImageText postImageText transition" dir="auto">
     <p class="postInfo bgMainColor">
       <span class="author">{{ author.display_name }}</span>
       │ {{ page.date | date: "%d/%m/%Y" }}</p>
@@ -16,7 +16,7 @@ layout: base
 <div class="contentBackground">
   <div class="contentDiv">
     <div
-      class="postContainer"
+      class="postContainer transition"
       dir={% if page.rtl %}
       "rtl"
       {% else %}

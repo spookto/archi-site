@@ -1,8 +1,15 @@
+{% assign target_link = include.post.url %}
+{% assign target_link_start = target_link | slice: 0 %}
+
+{% if target_link_start == "/" %}
+  {% assign target_link = site.baseurl | append: include.post.url %}
+{% endif %}
+
 <a href="
 {% if include.is_mention %}
 {{ include.post.link }}
 {% else %}
-{{ include.post.url | relative_url }}
+{{ site.baseurl | append: include.post.url }}
 {% endif %}
  " class="boxContainer postBox">
   <img src="{{ include.post.cover }}">

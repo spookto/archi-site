@@ -247,7 +247,7 @@ table, th, td {
   bottom: 8px;
   padding-left: 9px;
   padding-right: 9px;
-  font-size: min(60px, 7vw);
+  font-size: $font-size-header-normal;
   color: $text-white
 }
 
@@ -266,7 +266,7 @@ table, th, td {
 }
 
 .mainImageText h1 {
-  font-size: min(60px, 5vw);
+  font-size:  $font-size-header-normal;
 }
 
 p:dir(rtl) ~ .followSiblingP {
@@ -484,3 +484,7 @@ span.paginationDir {
   }
 }
 // End Page Specifics
+
+.transition,.mainImage {
+  opacity: 0;
+}

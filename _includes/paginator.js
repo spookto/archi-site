@@ -130,7 +130,7 @@ function searchObjects(searchQuery) {
     results = objects;
     url.searchParams.delete("search");
   }
-  history.pushState(null, '', url);
+  history.replaceState({}, '', url);
 
   let pageCountMax = Math.max(Math.ceil(results.length / entriesPerPage), 1);
   let currentPage = Math.max(url.searchParams.get("page") || 1, 1);

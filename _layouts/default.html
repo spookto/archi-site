@@ -6,12 +6,12 @@ layout: base
 {% if image_file %}
   <div class="mainImageDiv">
     <div class="mainImage" style="background-image: url({{image_file.path | relative_url}});"></div>
-    <h1 class="mainImageText">{{ page.title }}</h1>
+    <h1 class="mainImageText transition">{{ page.title }}</h1>
   </div>
 {% endif %}
 <div class="contentBackground">
   <div
-    class="contentDiv mainContentDiv"
+    class="contentDiv mainContentDiv transition"
     id="contentHolder"
     style="position: relative;">
     <div class="bgPaper noSelect absoluteFill" style="z-index: -1;"></div>

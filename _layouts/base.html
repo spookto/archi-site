@@ -4,10 +4,13 @@
   {% include common-head.html %}
   <body>
     {% include header.html %}
-    <div id="main" style="position: relative;">
+    <div id="main" style="position: relative; ">
       <div class="bgMainPaperBlack noSelect absoluteFill" style="z-index: -10;"></div>
       {{ content }}
     </div>
     {% include footer.html %}
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="{{ 'assets/js/transition.js' | relative_url }}"></script>
   </body>
 </html>
