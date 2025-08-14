@@ -391,6 +391,7 @@ ul:has(> li p [dir="rtl"]), ol:has(> li p [dir="rtl"]) {
 #partnersPage p {
   text-align: justify;
   font-weight: 700;
+  line-height: 1.5;
 }
 
 #partnersPage .content-ar {
@@ -406,15 +407,15 @@ ul:has(> li p [dir="rtl"]), ol:has(> li p [dir="rtl"]) {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1em;
+  gap: 1rem;
 }
 
 #partnerLinksContainer a {
   flex-grow: 1;
   aspect-ratio: 1.8;
   width: 100%;
-  max-width: 380px;
-  padding: min(20px, 1vw);
+  max-width: 320px;
+  padding: min(8px, 1vw);
 }
 
 #partnerLinksContainer a img {
