@@ -2,6 +2,7 @@ header {
   background-color: $main-color;
   color: $text-white;
   padding: 4px 10px;
+  z-index: 22;
 }
 
 #headerTitle {
@@ -82,12 +83,20 @@ nav {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 20;
   > a {
     width: 80%;
   }
   > a:not(:last-child) {
     border-bottom: solid 3px $text-white;
+  }
+  transform-origin: top;
+  transform: scaleY(0.0) translateY(-40vh);
+  transition: transform 0.2s ease-out, opacity 0.1s ease-out;
+  opacity: 0.0;
+  * {
+    transition: transform 0.3s ease-out;
+    transform: translateY(-20vh);
   }
 }
 
@@ -95,10 +104,18 @@ nav {
   position: relative;
   left: 0;
   right: 0;
-  overflow: hidden;
+  // overflow: hidden;
 }
 
 #headerMenuButton:checked ~ #headerMenuAnchor {
   overflow: visible;
   min-height: 100%;
+
+  #headerMenuContent {
+    transform: scaleY(1.0) translateY(0);
+    opacity: 1.0;
+    * {
+      transform: translateY(0);
+    }
+  }
 }
