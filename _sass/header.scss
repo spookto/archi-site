@@ -51,6 +51,7 @@ nav {
       text-shadow 0.1s;
   }
   a:hover {
+    transform: translateY(-3px);
     text-shadow: 3px 3px 0px $background-dark;
   }
 }
