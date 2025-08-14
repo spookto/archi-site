@@ -371,7 +371,7 @@ p:dir(rtl) ~ .followSiblingP {
 .contentDiv:has(> .postContainer) {
   display: flex;
   flex-direction: column;
-  padding: 0 1em;
+  padding: 0;
   margin: 0px 16px;
 }
 
