@@ -1,20 +1,20 @@
-<footer class="bgMainColor">
-  <div id="footerLeft" >
-      <div id="footerTitle">
-          <img class="logo" src="{{ 'assets/images/logo.png' | relative_url }}"/>
-          <div id="footerTitleTexts">
-              <h1>{{ site.title-abbreviation}}</h1>
-              <h4 style="font-weight: 600;" id="footerFullTitle">{{ site.title }}</h4>
-          </div>
+<footer class="bgMainColor transitionOpacity">
+  <div id="footerLeft">
+    <div id="footerTitle">
+      <img class="logo" src="{{ 'assets/images/logo.png' | relative_url }}" />
+      <div id="footerTitleTexts">
+        <h1>{{ site.title-abbreviation }}</h1>
+        <h4 style="font-weight: 600;" id="footerFullTitle">{{ site.title }}</h4>
       </div>
+    </div>
   </div>
-  <div id="footerRight" >
-      <div id="footerLinks">
-        {% for social in site.data.socials.items %}
-          <a class="{{ social.icon }}" href="{{ social.link }}"></a>
-        {% endfor %}
-      </div>
+  <div id="footerRight">
+    <div id="footerLinks">
+      {% for social in site.data.socials.items %}
+        <a class="{{ social.icon }}" href="{{ social.link }}"></a>
+      {% endfor %}
+    </div>
   </div>
   <h3 class="footerText">{{ site.email }}</h3>
-  <h3 class="footerText" style="text-align: right;">{{ site.title | remove: " "}} &copy; {{ site.copyright-year }}. All Rights Reserved.</h3>
+  <h3 class="footerText" style="text-align: right;">{{ site.title | remove: " " }} &copy; {{ site.copyright-year }}. All Rights Reserved.</h3>
 </footer>

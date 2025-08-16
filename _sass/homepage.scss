@@ -27,17 +27,17 @@
   }
 }
 
-#whoWeAreDiv {
+#whoWeAre {
   padding-bottom: 6rem;
   font-size: $font-size-large;
 }
 
-#whoWeAreDiv p {
+#whoWeAre p {
   font-weight: bold;
   text-align: justify;
 }
 
-#whoWeAreDiv h1 {
+#whoWeAre h1 {
   font-size: $font-size-header-large;
 }
 
@@ -90,16 +90,67 @@
   }
 }
 
-/* Medium devices (1000px and below) */
-@media only screen and (max-width: 1000px) {
+$intro-aspect-ratio: 2.2;
+.homepageIntro {
+  padding: 0;
+  color: $text-white;
+  position: relative;
+  aspect-ratio: $intro-aspect-ratio;
+  font-weight: bolder;
+  font-size: $font-size-header-normal;
+  text-align: center;
 
-}
+  h1 {
+    font-size: $font-size-header-normal;
+  }
 
-@media (max-aspect-ratio: 1/1) {
-  .homepageDiv {
-    padding: 0;
+  > .mainImage {
+    position: absolute;
+    aspect-ratio: $intro-aspect-ratio;
+    z-index: -1;
+    filter: brightness(60%);
+    border: none;
+    background-color: rgba(0,0,0,.5);
+  }
+
+  > .centerContent {
+    gap: 1.0rem;
   }
 }
+
+.bubbleButton {
+  font-size: 0.9em;
+  padding: 0 0.6em;
+  border: solid $text-white 3px;
+  border-radius: 1em;
+  line-height: 1.4;
+}
+
+.join {
+  line-height: normal;
+  width: 100%;
+  color: $text-white;
+  background-color: black;
+  font-size: $font-size-large;
+  font-weight: bolder;
+  padding: 30px min(10vw, 128px);
+  padding-bottom: max(140px, 4vh);
+
+  h1 {
+    width: 100%;
+    font-size: $font-size-header-large;
+  }
+
+  a {
+    margin-top: 4rem;
+    font-size: $font-size-header-normal;
+  }
+}
+
+#goals {
+  min-height: 100vh;
+}
+
 /* Small devices (768px and below) */
 @media only screen and (max-width: 768px) {
   #postPreviewsContainerH {

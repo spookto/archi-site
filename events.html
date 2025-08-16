@@ -1,6 +1,7 @@
 ---
 title: Events
 short_name: events
+noeventsmsg: No events available at the moment
 ---
 {% if site.events.size > 0 %}
   {% include searchbar.html padding=false %}
@@ -13,6 +14,5 @@ short_name: events
       {% include paginator.js objects=site.events target='url' %}
   </script>
 {% else %}
-  {% assign message_data = site.data.messages.messages | where: 'id', 'no_events' | first %}
-  <h1 class="headerRed" style="text-align: center; font-size: min(60px, 7vw);">{{ message_data.text }}</h1>
+  <h1 class="headerRed" style="text-align: center; font-size: min(60px, 7vw);">{{ page.noeventsmsg }}</h1>
 {% endif %}

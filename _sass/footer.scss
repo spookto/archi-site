@@ -1,5 +1,6 @@
 footer {
   bottom: 0;
+  height: 100%;
   width: 100%;
   clear: both;
   display: grid;
@@ -8,6 +9,7 @@ footer {
   padding-top: min(16px, 0.95vw);
   padding-bottom: 30px;
   font-size: $font-size-normal;
+  z-index: 5;
 }
 
 #footerTitle {

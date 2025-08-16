@@ -43,11 +43,31 @@ collections:
     folder: '_authors/'
     create: true
     slug: "{{name}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    summary: "{{display_name}} ({{name}})"
     editor:
       preview: false
     fields:
-      - { label: 'Short Name', name: 'name', widget: 'string' }
+      - { label: 'Identifier', name: 'name', widget: 'string', hint: 'Only used internally, never shown to the user. DO NOT CHANGE IF ALREADY USED IN AN ARTICLE!!!' }
       - { label: 'Display Name', name: 'display_name', widget: 'string' }
+
+  - name: 'pages'
+    label: 'Pages'
+    editor:
+      preview: false
+    files:
+      - label: 'Front Page'
+        name: 'index'
+        file: 'index.html'
+        fields:
+          - { label: 'Main Text', name: 'intromsg', widget: 'text' }
+          - { label: 'Who We Are Text', name: 'whowearemsg', widget: 'text' }
+          - { label: 'Join us Message', name: 'joinmsg', widget: 'text' }
+          - { label: 'Join Form URL', name: 'joinurl', widget: 'string' }
+      - label: "Events Page"
+        name: 'events'
+        file: 'events.html'
+        fields:
+          - { label: 'No Events Text', name: 'noeventsmsg', widget: 'text' }
 
   - name: "team_members"
     label: "Members"
@@ -143,16 +163,3 @@ collections:
         fields:
           - { label: "Name", name: "name", widget: "string" }
           - { label: "Image", name: "image", widget: "image" }
-
-      - label: "Messages"
-        name: "messages"
-        file: "_data/messages.yml"
-        fields:
-          - label: "Message Items"
-            name: "messages"
-            widget: "list"
-            allow_add: false
-            summary: '{{fields.id}}'
-            fields:
-              - { label: Identifier, name: id, widget: "hidden" }
-              - { label: Message Text, name: text, widget: string }

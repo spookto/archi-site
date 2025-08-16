@@ -13,6 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
       if (href.includes("?page")) {
         return;
       }
+      if (href.startsWith("#")) {
+        return;
+      }
 
       console.log(href);
       console.log(href.trim().concat("?transition"));
@@ -20,7 +23,12 @@ document.addEventListener("DOMContentLoaded", () => {
       if (href) {
         event.preventDefault();
         animateTransition().then(() => {
-          window.location.href = href.trim().concat("?transition");
+          var splits = href.split("#");
+          var final_url = splits[0].trim().concat("?transition");
+          if (splits.length > 1) {
+            final_url = final_url.concat("#" + splits[1]);
+          }
+          window.location.href = final_url;
         });
       }
     });
@@ -30,13 +38,13 @@ document.addEventListener("DOMContentLoaded", () => {
   {
     revealTransition().then(() => {
       gsap.set(".transition", { opacity: 1, clearProps: "transform" });
-      gsap.set(".mainImage", { opacity: 1 });
+      gsap.set(".mainImage,.transitionOpacity", { opacity: 1 });
     });
   }
   else
   {
     gsap.set(".transition", { opacity: 1, clearProps: "transform" });
-    gsap.set(".mainImage", { opacity: 1 });
+    gsap.set(".mainImage,.transitionOpacity", { opacity: 1 });
   }
 
   function revealTransition() {
@@ -50,8 +58,8 @@ document.addEventListener("DOMContentLoaded", () => {
         onComplete: resolve,
       });
 
-      gsap.set(".mainImage", { opacity: 0 });
-      gsap.to(".mainImage", {
+      gsap.set(".mainImage,.transitionOpacity", { opacity: 0 });
+      gsap.to(".mainImage,.transitionOpacity", {
         opacity: 1,
         duration: 0.7,
         ease: ease,
@@ -70,8 +78,8 @@ document.addEventListener("DOMContentLoaded", () => {
         onComplete: resolve,
       });
 
-      gsap.set(".mainImage", { opacity: 1 });
-      gsap.to(".mainImage", {
+      gsap.set(".mainImage,.transitionOpacity", { opacity: 1 });
+      gsap.to(".mainImage,.transitionOpacity", {
         opacity: 0,
         duration: 0.3,
         ease: ease,

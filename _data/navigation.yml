@@ -11,3 +11,5 @@ pages:
     url: mentions
   - title: Events
     url: events
+  - title: Join us
+    url: /#join

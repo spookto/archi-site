@@ -1,7 +1,26 @@
 ---
 layout: base
 title: Home
+intromsg: Helping advance the architecture space in Iraq
+whowearemsg: A registered club run by Iraqi students and graduates of Architecture departments throughout the country. We aim to create a contemporary  architectural community that aims to empower the youth and is concerned with issues of cultural heritage, the arts, and environmentally friendly architecture
+joinurl: ""
+joinmsg: Become a Member of Young Architects Foundation and help make a difference in the architecture space of Iraq
 ---
+<div class="vflex homepageDiv homepageIntro centerContent">
+  <div class="mainImage" style="background-image: url({{ 'assets/images/main1.jpg' | relative_url}});"></div>
+  <div class="centerContent transition">
+    <h1>{{ page.intromsg }}</h1>
+    <a href="#goals" class="bubbleButton">Learn More</a>
+  </div>
+</div>
+
+<div class="bgMainColor centerContent transition">
+  <div id="whoWeAre" class="contentDiv">
+    <h1>Who We Are</h1>
+    <p>{{ page.whowearemsg }}</p>
+  </div>
+</div>
+
 <div class="bgPaper centerContent transition">
   <div class="contentDiv" style="padding-top: 15px;">
     <a
@@ -31,16 +50,7 @@ title: Home
   </div>
 </div>
 
-<div class="bgMainColor centerContent transition">
-  <div id="whoWeAreDiv" class="contentDiv">
-    <h1>Who We Are</h1>
-    <p>
-      A registered student club in Baghdad run by students of Iraqi architectural universities. We aim to create a contemporary architectural community that aims to empower youth and is concerned with issues of cultural heritage, arts and environmentally friendly architecture.
-    </p>
-  </div>
-</div>
-
-<div class="contentBackground transition">
+<div class="contentBackground transitionOpacity" id="goals">
   <div class="contentDiv bgPaper vflex homepageDiv">
     <img src="{{ 'assets/images/main_background_top.png' | relative_url }}">
     <img src="{{ 'assets/images/main_background_bottom.png' | relative_url }}">
@@ -49,7 +59,7 @@ title: Home
         Our Goals
       </p>
     </div>
-    <div class="bgMainColor mainpageTextBlock" style="top: 17.04%; right: 7.85%; max-width: 700px;">
+    <div class="bgMainColor mainpageTextBlock" style="top: 15.04%; right: 7.85%; max-width: 700px;">
       <p>
         Encouraging students to participate in student and community activities in the fields related to architecture, environment, and arts
       </p>
@@ -69,14 +79,10 @@ title: Home
         Launching a platform on social media to raise awareness and spread architectural content and activities
       </p>
     </div>
-  </div>
-
-  <div class="contentDiv bgPaper vflex homepageDiv">
-    <img src="{{ 'assets/images/main_background_contact.png' | relative_url }}">
-    <div id="homepageContactDiv">
-      <img src="{{ 'assets/images/logo_large.png' | relative_url }}">
-      <h1 class="textMain">Contact Us</h1>
-      <h2>{{ site.email }}</h2>
+    <div class="join centerContent" id="join">
+      <h1 class="transition">Join us</h1>
+      <p class="transition">{{ page.joinmsg }}</p>
+      <a href="{{ page.joinurl }}" class="bubbleButton transition">Membership Form</a>
     </div>
   </div>
 </div>

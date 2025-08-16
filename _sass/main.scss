@@ -12,6 +12,9 @@ $font-size-large: min(2.1rem, 5vw);
 $font-size-header-normal: min(3rem, 5.8vw);
 $font-size-header-large: min(5rem, 7vw);
 
+html {
+  scroll-behavior: smooth;
+}
 
 * {
   margin: 0;
@@ -22,6 +25,7 @@ $font-size-header-large: min(5rem, 7vw);
 }
 
 body {
+  height: 100%;
   background-color: $main-color;
   min-height: 100vh;
   display: flex;
@@ -157,12 +161,6 @@ table, th, td {
 }
 // Text Colors End
 
-.centerContent {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .postBox {
   display: flex;
   flex-direction: column;
@@ -272,6 +270,13 @@ table, th, td {
 p:dir(rtl) ~ .followSiblingP {
   text-align: right;
   padding-top: 6px;
+}
+
+.centerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 // Page Specifics
@@ -486,6 +491,6 @@ span.paginationDir {
 }
 // End Page Specifics
 
-.transition,.mainImage {
+.transition,.transitionOpacity,.mainImage {
   opacity: 0;
 }
