@@ -91,6 +91,7 @@
 }
 
 $intro-aspect-ratio: 2.2;
+$intro-min-height: 50vh;
 .homepageIntro {
   padding: 0;
   color: $text-white;
@@ -99,6 +100,7 @@ $intro-aspect-ratio: 2.2;
   font-weight: bolder;
   font-size: $font-size-header-normal;
   text-align: center;
+  min-height: $intro-min-height;
 
   h1 {
     font-size: $font-size-header-normal;
@@ -111,6 +113,7 @@ $intro-aspect-ratio: 2.2;
     filter: brightness(60%);
     border: none;
     background-color: rgba(0,0,0,.5);
+    min-height: $intro-min-height;
   }
 
   > .centerContent {
@@ -133,7 +136,7 @@ $intro-aspect-ratio: 2.2;
   background-color: black;
   font-size: $font-size-large;
   font-weight: bolder;
-  padding: 30px min(10vw, 128px);
+  padding: 100px min(10vw, 128px);
   padding-bottom: max(140px, 4vh);
 
   h1 {
