@@ -10,10 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     link.addEventListener("click", (event) => {
       const href = link.getAttribute("href");
 
-      if (href.includes("?page")) {
-        return;
-      }
-      if (href.startsWith("#")) {
+      if (href.includes("?page") || href.startsWith("#") || href.startsWith("www.") || href.startsWith("https://") || href.startsWith("http://")) {
         return;
       }
 
