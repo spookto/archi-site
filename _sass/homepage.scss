@@ -28,17 +28,19 @@
 }
 
 #whoWeAre {
-  padding-bottom: 6rem;
+  padding-top: 8rem;
+  padding-bottom: 12rem;
   font-size: $font-size-large;
-}
 
-#whoWeAre p {
-  font-weight: bold;
-  text-align: justify;
-}
+  p {
+    font-weight: bold;
+    text-align: justify;
+  }
 
-#whoWeAre h1 {
-  font-size: $font-size-header-large;
+  h1 {
+    line-height: 1.2;
+    font-size: $font-size-header-large;
+  }
 }
 
 .homepageDiv {
@@ -121,8 +123,32 @@ $intro-min-height: 50vh;
   }
 }
 
+.join {
+  line-height: normal;
+  width: 100%;
+  color: $text-white;
+  background-color: black;
+  font-size: $font-size-header-normal;
+  font-weight: bolder;
+  padding: 100px min(10vw, 128px);
+  padding-bottom: max(140px, 4vh);
+
+  h1 {
+    width: 100%;
+    font-size: $font-size-header-large;
+  }
+
+  p {
+    font-size: $font-size-large;
+  }
+
+  a {
+    margin-top: 4rem;
+  }
+}
+
 .bubbleButton {
-  font-size: 0.9em;
+  font-size: max(0.7em, 1.6rem);
   padding: 0 0.6em;
   border: solid $text-white 3px;
   border-radius: 1em;
@@ -136,27 +162,6 @@ $intro-min-height: 50vh;
     mix-blend-mode: screen;
     background-color: $text-white;
     color: black;
-  }
-}
-
-.join {
-  line-height: normal;
-  width: 100%;
-  color: $text-white;
-  background-color: black;
-  font-size: $font-size-large;
-  font-weight: bolder;
-  padding: 100px min(10vw, 128px);
-  padding-bottom: max(140px, 4vh);
-
-  h1 {
-    width: 100%;
-    font-size: $font-size-header-large;
-  }
-
-  a {
-    margin-top: 4rem;
-    font-size: $font-size-header-normal;
   }
 }
 

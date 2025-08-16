@@ -62,6 +62,9 @@
   .pagination {
     font-size: 1.4em;
   }
+  #whoWeAre p, .join p {
+    text-align: left;
+  }
 }
 
 @media only screen and (max-aspect-ratio: 0.9) {
