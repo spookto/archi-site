@@ -127,6 +127,16 @@ $intro-min-height: 50vh;
   border: solid $text-white 3px;
   border-radius: 1em;
   line-height: 1.4;
+  transition:
+    background-color 0.22s,
+    color 0.1s,
+  ;
+
+  &:hover {
+    mix-blend-mode: screen;
+    background-color: $text-white;
+    color: black;
+  }
 }
 
 .join {
