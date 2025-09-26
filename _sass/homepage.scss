@@ -27,10 +27,20 @@
   }
 }
 
-#whoWeAre {
-  padding-top: 8rem;
-  padding-bottom: 12rem;
+.mainInfoContainer {
+  position: relative;
+  aspect-ratio: 16/9;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.mainInfoTexts {
+  color: $text-white;
   font-size: $font-size-large;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 1;
 
   p {
     font-weight: bold;
@@ -41,6 +51,23 @@
     line-height: 1.2;
     font-size: $font-size-header-large;
   }
+
+  .bubbleButton {
+    max-width: fit-content;
+    display: block;
+    margin: auto;
+    margin-top: 3rem;
+    margin-bottom: 0;
+    font-size: $font-size-large;
+    font-weight: bold;
+  }
+}
+
+.shadeGradient {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  mix-blend-mode: multiply;
 }
 
 .homepageDiv {
@@ -123,28 +150,20 @@ $intro-min-height: 50vh;
   }
 }
 
-.join {
-  line-height: normal;
+.parallaxImage {
+  display: block;
+  position: absolute;
+
+  z-index: -1;
   width: 100%;
-  color: $text-white;
-  background-color: black;
-  font-size: $font-size-header-normal;
-  font-weight: bolder;
-  padding: 100px min(10vw, 128px);
-  padding-bottom: max(140px, 4vh);
+  height: 100%;
+  min-height: 100%;
 
-  h1 {
-    width: 100%;
-    font-size: $font-size-header-large;
-  }
-
-  p {
-    font-size: $font-size-large;
-  }
-
-  a {
-    margin-top: 4rem;
-  }
+  background-origin: border-box;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .bubbleButton {
@@ -169,10 +188,54 @@ $intro-min-height: 50vh;
   min-height: 100vh;
 }
 
+#callToAction {
+  padding: max(140px, 4vh) 0;
+}
+
+.callToActionGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  font-weight: bold;
+  padding: 11rem 0;
+  font-size: $font-size-normal;
+
+  h1 {
+    width: 100%;
+    font-size: $font-size-header-large;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: $font-size-large;
+  }
+
+  * {
+    align-self: center;
+    justify-self: center;
+  }
+
+  .bubbleButton {
+    max-width: fit-content;
+    display: block;
+    margin: auto;
+    margin-top: 2rem;
+    font-size: $font-size-large;
+  }
+}
+
 /* Small devices (768px and below) */
 @media only screen and (max-width: 768px) {
   #postPreviewsContainerH {
     flex-direction: column;
+  }
+
+  .callToActionGrid {
+    grid-template-columns: 1fr;
+
+    > h1 {
+      order: -1;
+    }
   }
 
   #postPreviewsContainerV {

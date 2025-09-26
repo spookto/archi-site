@@ -3,21 +3,16 @@ layout: base
 title: Home
 intromsg: Helping advance the architecture space in Iraq
 whowearemsg: A registered club run by Iraqi students and graduates of Architecture departments throughout the country. We aim to create a contemporary  architectural community that aims to empower the youth and is concerned with issues of cultural heritage, the arts, and environmentally friendly architecture
+whatwedomsg: "Young Architects Club conducts various activities, initiatives, campaigns, and programs in the hope of leaving a positive mark in the architecture space of Iraq"
 joinurl: ""
 joinmsg: Become a Member of Young Architects Foundation and help make a difference in the architecture space of Iraq
+contactmsg: "Get in touch with Young Architects Foundation through our Email:"
 ---
 <div class="vflex homepageDiv homepageIntro centerContent">
   <div class="mainImage" style="background-image: url({{ 'assets/images/main1.jpg' | relative_url}});"></div>
   <div class="centerContent transition">
     <h1>{{ page.intromsg }}</h1>
-    <a href="#goals" class="bubbleButton">Learn More</a>
-  </div>
-</div>
-
-<div class="bgMainColor centerContent transition">
-  <div id="whoWeAre" class="contentDiv">
-    <h1>Who We Are</h1>
-    <p>{{ page.whowearemsg }}</p>
+    <a href="#whoWeAre" class="bubbleButton">Learn More</a>
   </div>
 </div>
 
@@ -50,41 +45,56 @@ joinmsg: Become a Member of Young Architects Foundation and help make a differen
   </div>
 </div>
 
-<div class="contentBackground transitionOpacity" id="goals">
-  <div class="contentDiv bgPaper vflex homepageDiv">
-    <img src="{{ 'assets/images/main_background_top.png' | relative_url }}">
-    <img src="{{ 'assets/images/main_background_bottom.png' | relative_url }}">
-    <div class="bgMainColor mainpageTextBlock" style="font-size: 1.4em; top: 0.93%; min-width: 0; aspect-ratio: 0; padding: 1rem;">
-      <p>
-        Our Goals
-      </p>
-    </div>
-    <div class="bgMainColor mainpageTextBlock" style="top: 15.04%; right: 7.85%;">
-      <p>
-        Encouraging students to participate in student and community activities in the fields related to architecture, environment, and arts
-      </p>
-    </div>
-    <div class="bgMainColor mainpageTextBlock" style="left: 77px; top: 30.6%;">
-      <p>
-        Promoting cooperation and guidance through joint work among students, educational institutions, and experts
-      </p>
-    </div>
-    <div class="bgMainColor mainpageTextBlock" style="right: 1.814%; top: 64.08%;">
-      <p>
-        Providing students with the knowledge and necessary skills to make use of after graduation
-      </p>
-    </div>
-    <div class="bgMainColor mainpageTextBlock" style="left: 9.79%; top: 74.44%;">
-      <p>
-        Launching a platform on social media to raise awareness and spread architectural content and activities
-      </p>
-    </div>
+<div class="centerContent transition mainInfoContainer" style="background-image: url({{ 'assets/images/cave.jpg' | relative_url}});">
+  <div class="shadeGradient" style="background: linear-gradient(90deg, black 0%, rgb(102, 102, 102) 50%, black 100%);"></div>
+  <div id="whoWeAre" class="contentDiv mainInfoTexts">
+    <h1>Who We Are</h1>
+    <p>{{ page.whowearemsg }}</p>
   </div>
-  <div class="contentDiv bgPaper vflex homepageDiv">
-    <div class="join centerContent" id="join">
-      <h1 class="transition">Join us</h1>
+</div>
+
+<div class="bgPaper centerContent transition">
+  <div class="contentDiv" style="padding-top: 11rem; padding-bottom: 11rem;">
+    <a
+      href="{{ '/partners' | relative_url }}"
+      class="boxContainer"
+      style="max-width: max-content; padding: 0 0.4rem; line-height: 1.3; margin-bottom: 2rem;">
+      <h1>Our Partners</h1>
+    </a>
+    <div id="partnerLinksContainer" square="true">
+      {% for partner in site.partners %}
+        <a class="boxContainer partnerBox yesSelect" name="{{ partner.title }}|{{ partner.titlear }}">
+          <img src="{{ partner.image }}" class="noSelect">
+        </a>
+      {% endfor %}
+    </div>
+  <!-- TODO: Add pagenation to partners ! -->
+  </div>
+</div>
+
+<div class="centerContent transition mainInfoContainer" style="background-image: url({{ 'assets/images/crowd.jpg' | relative_url}});">
+  <div class="shadeGradient" style="background: linear-gradient(0deg, black 0%, white 100%);"></div>
+  <div id="whatWeDo" class="contentDiv mainInfoTexts">
+    <h1>What We Do</h1>
+    <p>{{ page.whatwedomsg }}</p>
+    <a href="{{ page.joinurl }}" class="bubbleButton transition">Learn More</a>
+  </div>
+</div>
+
+<div class="centerContent transition bgBlackColor" id="callToAction">
+  <div class="contentDiv callToActionGrid" id="join">
+    <h1 class="transition">Join us</h1>
+    <section>
       <p class="transition">{{ page.joinmsg }}</p>
       <a href="{{ page.joinurl }}" class="bubbleButton transition">Membership Form</a>
-    </div>
+    </section>
+  </div>
+  <hr style="width: min(max(70vw, 1000px), 100vw); color: white;">
+  <div class="contentDiv callToActionGrid">
+    <section>
+      <p class="transition">{{ page.contactmsg }}</p>
+      <h2 class="transition">{{ site.email }}</h2>
+    </section>
+    <h1 class="transition">Contact us</h1>
   </div>
 </div>
