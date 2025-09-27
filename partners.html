@@ -10,7 +10,7 @@ short_name: partners
     <br>
 
     <h1>What We Offer</h1>
-    <p>General marketing strategies and smart media campaigns that showcase the identity of a place. 
+    <p>General marketing strategies and smart media campaigns that showcase the identity of a place.
       Design and implementation of on-site architectural projects. Management of youth-led urban initiatives.
       Production of urban documentary films.
       Applied architectural training for university students</p>
@@ -56,57 +56,4 @@ short_name: partners
   </div>
 </section>
 
-<script>
-  let clickShow = false;
-  const move = document.getElementById("move");
-
-  document.addEventListener("pointerdown", (event) => {
-    console.log(event.target);
-    if (!event.target.closest(".partnerBox")) {
-      move.style.setProperty('visibility', 'hidden');
-    }
-    else {
-      clickShow = true;
-      setInformation(event.target);
-      move.style.setProperty('visibility', 'visible');
-      showMove(event.clientX, event.clientY, 0);
-    }
-  })
-
-  document.body.onpointermove = (event) => {
-    const { clientX, clientY } = event;
-
-    const closestElement = document.elementFromPoint(clientX, clientY);
-
-    if (!closestElement.closest(".partnerBox")) {
-      move.style.setProperty('visibility', 'hidden');
-    }
-    else {
-      setInformation(closestElement);
-      move.style.setProperty('visibility', 'visible');
-      showMove(clientX, clientY, 0);
-    }
-  }
-
-  document.onscroll = (event) => {
-    if (clickShow) {
-      clickShow = false;
-      move.style.setProperty('visibility', 'hidden');
-    }
-  }
-
-  function setInformation(element) {
-    move.getElementsByClassName("content-en")[0].textContent = element.name.split("|")[0];
-    move.getElementsByClassName("content-ar")[0].textContent = element.name.split("|")[1];
-  }
-
-  function showMove(x, y, dur) {
-    x = Math.min(x, document.body.clientWidth - move.clientWidth - 32);
-
-    move.animate({
-      left: `${x + 16}px`,
-      top: `${y}px`,
-
-    }, {duration: dur, fill: "forwards"})
-  }
-</script>
+<script src="{{ 'assets/js/partnerhover.js' | relative_url }}"></script>

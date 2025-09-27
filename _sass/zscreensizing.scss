@@ -76,6 +76,10 @@
     background-size: cover;
     background-attachment: scroll;
   }
+
+  .carousel {
+    max-width: calc(var(--item-size-calced) * 3);
+  }
 }
 
 /* Small devices (768px and below) */
@@ -88,5 +92,9 @@
   }
   #headerMenuButtonLabel {
     display: block;
+  }
+
+  .carousel {
+    max-width: calc(var(--item-size-calced) * 2);
   }
 }

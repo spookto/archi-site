@@ -68,6 +68,17 @@ a {
   justify-content: space-between;
 }
 
+.grayscaleHover {
+  transition: filter 0.2s ease-in-out;
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+
+  &:hover {
+    filter: grayscale(0%);
+    -webkit-filter: grayscale(0%);
+  }
+}
+
 .boxContainer {
   display: flex;
   flex-direction: column;
@@ -77,7 +88,7 @@ a {
   padding: 16px;
   background-color: #fff;
 
-  &[href]
+  &[href], &:is(input)
   {
     transition:
       translate 0.1s,
@@ -87,9 +98,7 @@ a {
       translate: 0px -2px;
       border-color: $main-color;
       box-shadow: 14px 14px $main-color;
-      & > h1 {
-        color: $main-color;
-      }
+      color: $main-color;
     }
   }
 }
@@ -415,13 +424,6 @@ ul:has(> li p [dir="rtl"]), ol:has(> li p [dir="rtl"]) {
 #partnerLinksContainer {
   display: grid;
   grid-template-columns: repeat( auto-fit, minmax(min(280px, 30vw), 1fr) );
-  &[square="true"] {
-    grid-template-columns: repeat( auto-fit, minmax(min(170px, 30vw), 1fr) );
-    > * {
-      aspect-ratio: 1;
-    }
-    gap: 3rem;
-  }
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -440,6 +442,67 @@ ul:has(> li p [dir="rtl"]), ol:has(> li p [dir="rtl"]) {
     height: 100%;
     object-fit: contain;
     transition: 0.3s;
+  }
+
+  &.carousel {
+    --item-gap: min(48px, 6vw);
+    --item-width: min(172px, 30vw);
+    --item-size-calced: calc(var(--item-width) + var(--item-gap));
+
+    gap: var(--item-gap);
+    padding-right: var(--item-gap);
+    width: calc(var(--item-size-calced) * 5);
+    margin: auto;
+    height: calc((var(--item-width) + var(--item-gap)) * 2);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    display: flex;
+    flex-direction: column;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+
+    /* Hide scrollbars */
+    &::-webkit-scrollbar {
+      display: none; /* Chrome, Safari and Opera */
+    }
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+
+    > .carouselBox {
+      gap: var(--item-gap);
+
+      position: relative;
+      flex: 0 0 100%;
+      max-width: var(--item-width);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      scroll-snap-align: start;
+
+      > * {
+        display: block;
+        margin: 0;
+        aspect-ratio: 1.0;
+        flex: 0 0 100%;
+        max-width: var(--item-width);
+        max-height: var(--item-width);
+      }
+    }
+  }
+}
+
+.carouselButton {
+  line-height: 0;
+  font-weight: bolder;
+  padding: 0 0.4rem;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  font-size: $font-size-header-normal;
+
+  &:disabled {
+    filter: opacity(50%) grayscale(100%);
   }
 }
 
