@@ -2,6 +2,11 @@
 layout: base
 ---
 {% assign page_image = page.short_name | prepend: "/assets/images/page_" | append: ".png" %}
+
+{% if page.image_url %}
+{% assign page_image = page.image_url %}
+{% endif %}
+
 {% assign image_file = site.static_files | where: "path", page_image | first %}
 {% if image_file %}
   <div class="mainImageDiv">
@@ -13,7 +18,13 @@ layout: base
   <div
     class="contentDiv mainContentDiv transition"
     id="contentHolder"
-    style="position: relative;">
+    style="
+    position: relative;
+    {% if page.no-vertical-padding %}
+    padding-top: 0;
+    padding-bottom: 0;
+    {% endif %}
+    ">
     <div class="bgPaper noSelect absoluteFill" style="z-index: -1;"></div>
     <section style="z-index: 10;">
       {{ content }}
