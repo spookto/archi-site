@@ -9,6 +9,8 @@ pages:
     url: members
   - title: Mentions
     url: mentions
+  - title: Goals
+    url: goals
   - title: Events
     url: events
   - title: Join us
