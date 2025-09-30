@@ -30,6 +30,11 @@
 .mainInfoContainer {
   position: relative;
   aspect-ratio: 16/9;
+
+  min-height: 70vh;
+  background-origin: border-box;
+  background-position: center bottom;
+  background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
 }
