@@ -119,7 +119,7 @@ contactmsg: "Get in touch with Young Architects Foundation through our Email:"
         }
         function updateButtonsEnabled() {
           leftBtn.disabled = carousel.scrollLeft <= 0;
-          rightBtn.disabled = nextL >= (carousel.scrollWidth - carousel.clientWidth);
+          rightBtn.disabled = carousel.scrollLeft >= (carousel.scrollWidth - carousel.clientWidth);
         }
 
         updateButtonsVisibility()
