@@ -24,6 +24,10 @@ layout: base
     padding-top: 0;
     padding-bottom: 0;
     {% endif %}
+    {% if page.no-horizontal-padding %}
+    padding-right: 0;
+    padding-left: 0;
+    {% endif %}
     ">
     <div class="bgPaper noSelect absoluteFill" style="z-index: -1;"></div>
     <section style="z-index: 10;">
