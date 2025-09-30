@@ -42,18 +42,98 @@ short_name: partners
 
     <h1>شركاؤنا:</h1>
   </div>
-  <div id="partnerLinksContainer">
-    {% for partner in site.partners %}
-      <a class="boxContainer partnerBox yesSelect" name="{{ partner.title }}|{{ partner.titlear }}">
-        <img src="{{ partner.image }}" class="noSelect">
-      </a>
+
+  <div class="carouselSize" style="display: flex; flex-direction: row; gap: 1rem; height: auto; justify-content: flex-end;">
+    <button type="button" class="boxContainer carouselButton grayscaleHover" id="carousel-left">
+      <p>{{ site.page_text_prev }}</p>
+    </button>
+
+    <button type="button" class="boxContainer carouselButton grayscaleHover" id="carousel-right">
+      <p>{{ site.page_text_next }}</p>
+    </button>
+  </div>
+  <div id="partnerLinksContainer" class="carousel">
+    {% assign partnersIterationCount = site.partners.size | divided_by: 2 %}
+    {% for q in (1..5) %}
+      {% for i in (1..partnersIterationCount) %}
+
+        {% assign jOdd = i | minus: 1 | times: 2 %}
+        {% assign jEven = jOdd | plus: 1 %}
+        {% assign partnerEven = site.partners[jEven] %}
+        {% assign partnerOdd = site.partners[jOdd] %}
+
+        <div class="carouselBox">
+          <a class="boxContainer partnerBox yesSelect grayscaleHover" name="{{ partnerOdd.title }}|{{ partnerOdd.titlear }}">
+            <img src="{{ partnerOdd.image }}" class="noSelect">
+          </a>
+          <a class="boxContainer partnerBox yesSelect grayscaleHover" name="{{ partnerEven.title }}|{{ partnerEven.titlear }}">
+            <img src="{{ partnerEven.image }}" class="noSelect">
+          </a>
+        </div>
+
+      {% endfor %}
     {% endfor %}
   </div>
 
-  <div id="move" class="boxContainer noSelect">
-    <h4 class="content-ar" dir="rtl">TEST AR</h4>
-    <h4 class="content-en">TEST EN</h4>
-  </div>
-</section>
+    <section>
+      <div id="move" class="boxContainer noSelect">
+        <h4 class="content-ar" dir="rtl">TEST AR</h4>
+        <h4 class="content-en">TEST EN</h4>
+      </div>
+    </section>
 
-<script src="{{ 'assets/js/partnerhover.js' | relative_url }}"></script>
+    <script src="{{ 'assets/js/partnerhover.js' | relative_url }}"></script>
+
+    <script>
+        const carousel = document.getElementById("partnerLinksContainer");
+        const leftBtn = document.getElementById("carousel-left");
+        const rightBtn = document.getElementById("carousel-right");
+
+        function isOverflowing(element) {
+          return element.scrollWidth > element.clientWidth;
+        }
+
+        function updateButtonsVisibility() {
+          if (isOverflowing(carousel)) {
+            rightBtn.style.display = 'block';
+            leftBtn.style.display = 'block';
+            updateButtonsEnabled();
+          }
+          else {
+            rightBtn.style.display = 'none';
+            leftBtn.style.display = 'none';
+          }
+        }
+        function updateButtonsEnabled() {
+          leftBtn.disabled = carousel.scrollLeft <= 0;
+          rightBtn.disabled = carousel.scrollLeft >= (carousel.scrollWidth - carousel.clientWidth);
+        }
+
+        updateButtonsVisibility()
+
+        leftBtn.onclick=function scrollDown() {
+          var nextL = carousel.scrollLeft - 250;
+          carousel.scrollLeft = nextL;
+          rightBtn.disabled = false;
+          if (nextL <= 0) {
+            leftBtn.disabled = true;
+          }
+        }
+
+        rightBtn.onclick=function scrollDown() {
+          var nextL = carousel.scrollLeft + 250;
+          carousel.scrollLeft = nextL;
+          leftBtn.disabled = false;
+          if (nextL >= (carousel.scrollWidth - carousel.clientWidth)) {
+            rightBtn.disabled = true;
+          }
+        }
+
+        window.addEventListener('resize', function(event) {
+          updateButtonsVisibility();
+        }, true);
+
+    </script>
+  </div>
+
+</section>

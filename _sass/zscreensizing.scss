@@ -68,23 +68,33 @@
 }
 
 @media only screen and (max-aspect-ratio: 0.9) {
-  /*
   .mainImage {
-    aspect-ratio: 2.2;
-    background-origin: border-box;
-    background-position: center top;
-    background-repeat: no-repeat;
-    background-size: cover;
     background-attachment: scroll;
   }
-  */
 
-  .carousel {
-    max-width: calc(var(--item-size-calced) * 3);
+  .homepageIntro {
+    min-height: 100vh;
+
+    > .mainImage {
+      min-height: 100vh;
+      aspect-ratio: 2.2;
+      background-attachment: fixed;
+    }
+  }
+
+  .carousel, .carouselSize {
+    max-width: calc(var(--item-size-calced) * 4);
+  }
+
+  .callToActionGrid {
+    grid-template-columns: 1fr;
+
+    > h1 {
+      order: -1;
+    }
   }
 }
 
-/* Small devices (768px and below) */
 @media only screen and (max-width: 768px) {
   #articlesContainer {
     grid-template-columns: 1fr;
@@ -96,7 +106,7 @@
     display: block;
   }
 
-  .carousel {
+  .carousel, .carouselSize {
     max-width: calc(var(--item-size-calced) * 2);
   }
 }

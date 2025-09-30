@@ -88,7 +88,7 @@ a {
   padding: 16px;
   background-color: #fff;
 
-  &[href], &:is(input)
+  &[href], &:is(input), &:is(button)
   {
     transition:
       translate 0.1s,
@@ -421,6 +421,22 @@ ul:has(> li p [dir="rtl"]), ol:has(> li p [dir="rtl"]) {
   margin-right: 8vw;
 }
 
+@mixin carouselSized {
+  --item-gap: min(48px, 6vw);
+  --item-width: min(172px, 30vw);
+  --item-size-calced: calc(var(--item-width) + var(--item-gap));
+
+  gap: var(--item-gap);
+  padding-right: var(--item-gap);
+  width: calc(var(--item-size-calced) * 5);
+  margin: auto;
+  height: calc((var(--item-width) + var(--item-gap)) * 2);
+}
+
+.carouselSize {
+  @include carouselSized;
+}
+
 #partnerLinksContainer {
   display: grid;
   grid-template-columns: repeat( auto-fit, minmax(min(280px, 30vw), 1fr) );
@@ -444,16 +460,10 @@ ul:has(> li p [dir="rtl"]), ol:has(> li p [dir="rtl"]) {
     transition: 0.3s;
   }
 
-  &.carousel {
-    --item-gap: min(48px, 6vw);
-    --item-width: min(172px, 30vw);
-    --item-size-calced: calc(var(--item-width) + var(--item-gap));
 
-    gap: var(--item-gap);
-    padding-right: var(--item-gap);
-    width: calc(var(--item-size-calced) * 5);
-    margin: auto;
-    height: calc((var(--item-width) + var(--item-gap)) * 2);
+  &.carousel {
+    @include carouselSized;
+
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     display: flex;
@@ -494,12 +504,22 @@ ul:has(> li p [dir="rtl"]), ol:has(> li p [dir="rtl"]) {
 }
 
 .carouselButton {
+  min-height: 1em;
+  position: relative;
+  width: 2ch;
   line-height: 0;
   font-weight: bolder;
   padding: 0 0.4rem;
   margin-bottom: 2rem;
   cursor: pointer;
   font-size: $font-size-header-normal;
+
+  > p {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 
   &:disabled {
     filter: opacity(50%) grayscale(100%);

@@ -71,7 +71,7 @@
 .shadeGradient {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: calc(100% + 10px);
   mix-blend-mode: multiply;
 }
 
@@ -85,7 +85,6 @@
 
 .homepageDiv img {
   width: 100%;
-  mix-blend-mode: multiply;
 }
 
 .mainpageTextBlock {
@@ -138,6 +137,7 @@ $intro-min-height: 80vh;
 
   h1 {
     font-size: $font-size-header-normal;
+    max-width: 80vw;
   }
 
   > .mainImage {
@@ -145,6 +145,7 @@ $intro-min-height: 80vh;
     aspect-ratio: $intro-aspect-ratio;
     z-index: -1;
     filter: brightness(60%);
+    -webkit-filter: brightness(60%);
     border: none;
     background-color: rgba(0,0,0,.5);
     min-height: $intro-min-height;
@@ -240,14 +241,6 @@ $intro-min-height: 80vh;
 @media only screen and (max-width: 768px) {
   #postPreviewsContainerH {
     flex-direction: column;
-  }
-
-  .callToActionGrid {
-    grid-template-columns: 1fr;
-
-    > h1 {
-      order: -1;
-    }
   }
 
   #postPreviewsContainerV {

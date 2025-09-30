@@ -16,7 +16,7 @@ contactmsg: "Get in touch with Young Architects Foundation through our Email:"
   </div>
 </div>
 
-<div class="bgPaper centerContent transition" style="min-height: 62vh; padding-top: 4rem; padding-bottom: 1rem;">
+<div class="bgPaper centerContent transition" style="min-height: 58vh; padding-top: 5rem; padding-bottom: 2rem;">
   <div class="contentDiv mainpageSection" style="padding-top: 15px;">
     <a
       href="{{ '/articles' | relative_url }}"
@@ -53,22 +53,28 @@ contactmsg: "Get in touch with Young Architects Foundation through our Email:"
   </div>
 </div>
 
-<div class="bgPaper centerContent transition" style="min-height: 62vh">
+<div class="bgPaper centerContent transition" style="min-height: 50vh; padding-top: 7rem; padding-bottom: 7rem;">
   <div class="contentDiv mainpageSection">
-    <div style="display: flex; flex-direction: row; gap: 1rem;">
-    <a
-      href="{{ '/partners' | relative_url }}"
-      class="boxContainer grayscaleHover"
-      style="max-width: max-content; padding: 0 0.4rem; line-height: 1.3; margin-bottom: 2rem; margin-right: auto;">
-      <h1>Our Partners</h1>
-    </a>
+    <div class="carouselSize" style="display: flex; flex-direction: row; gap: 1rem; height: auto;">
+      <a
+        href="{{ '/partners' | relative_url }}"
+        class="boxContainer grayscaleHover"
+        style="max-width: max-content; padding: 0 0.4rem; line-height: 1.3; margin-bottom: 2rem; margin-right: auto;">
+        <h1>Our Partners</h1>
+      </a>
 
-    <input type="button" class="boxContainer carouselButton grayscaleHover" value="{{ site.page_text_prev }}" id="carousel-left" />
+      <button type="button" class="boxContainer carouselButton grayscaleHover" id="carousel-left">
+        <p>{{ site.page_text_prev }}</p>
+      </button>
 
-    <input type="button" class="boxContainer carouselButton grayscaleHover" value="{{ site.page_text_next }}" id="carousel-right" />
-  </div>
+      <button type="button" class="boxContainer carouselButton grayscaleHover" id="carousel-right">
+        <p>{{ site.page_text_next }}</p>
+      </button>
+
+    </div>
     <div id="partnerLinksContainer" class="carousel">
       {% assign partnersIterationCount = site.partners.size | divided_by: 2 %}
+        {% for q in (1..5) %}
         {% for i in (1..partnersIterationCount) %}
 
           {% assign jOdd = i | minus: 1 | times: 2 %}
@@ -85,6 +91,7 @@ contactmsg: "Get in touch with Young Architects Foundation through our Email:"
             </a>
           </div>
 
+      {% endfor %}
       {% endfor %}
     </div>
 
@@ -151,7 +158,7 @@ contactmsg: "Get in touch with Young Architects Foundation through our Email:"
 </div>
 
 <div class="centerContent transition mainInfoContainer" style="background-image: url({{ 'assets/images/crowd.jpg' | relative_url}});">
-  <div class="shadeGradient" style="background: linear-gradient(0deg, black 0%, white 100%);"></div>
+  <div class="shadeGradient" style="background: linear-gradient(0deg, #000000 0%, #737373 11%, #F2F2F2 100%);"></div>
   <div id="whatWeDo" class="contentDiv mainInfoTexts">
     <h1>What We Do</h1>
     <p>{{ page.whatwedomsg }}</p>
@@ -160,15 +167,15 @@ contactmsg: "Get in touch with Young Architects Foundation through our Email:"
 </div>
 
 <div class="centerContent transition bgBlackColor" id="callToAction">
-  <div class="contentDiv callToActionGrid" id="join">
+  <div class="contentDiv callToActionGrid" id="join" style="min-width: 80vw; max-width: 80vw;">
     <h1 class="transition">Join us</h1>
     <section>
       <p class="transition">{{ page.joinmsg }}</p>
       <a href="{{ page.joinurl }}" class="bubbleButton transition">Membership Form</a>
     </section>
   </div>
-  <hr style="width: min(max(70vw, 1000px), 100vw); color: white;">
-  <div class="contentDiv callToActionGrid">
+  <hr style="width: min(max(70vw, 1000px), 85vw); color: white;">
+  <div class="contentDiv callToActionGrid" style="min-width: 80vw; max-width: 80vw;">
     <section>
       <p class="transition">{{ page.contactmsg }}</p>
       <h2 class="transition">{{ site.email }}</h2>
